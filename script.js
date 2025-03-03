@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
     document.body.appendChild(loadingScreen);
 
-    // Initialize wave background
-    const waveBackground = new WaveBackground();
+    // Initialize galaxy background
+    const galaxyBackground = new GalaxyBackground();
     
     // Add project card to main container
     addProjectCard();
@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }, 1500);
     
-    // Update UI colors based on wave background
+    // Update UI colors based on galaxy background
     setInterval(() => {
-        const primaryColor = `hsl(${waveBackground.baseColors[0].h}, ${waveBackground.baseColors[0].s}%, ${waveBackground.baseColors[0].l}%)`;
-        const accentColor = `hsl(${waveBackground.baseColors[1].h}, ${waveBackground.baseColors[1].s}%, ${waveBackground.baseColors[1].l + 10}%)`;
+        const primaryColor = `hsl(${galaxyBackground.baseColors[0].h}, ${galaxyBackground.baseColors[0].s}%, ${galaxyBackground.baseColors[0].l}%)`;
+        const accentColor = `hsl(${galaxyBackground.baseColors[1].h}, ${galaxyBackground.baseColors[1].s}%, ${galaxyBackground.baseColors[1].l + 10}%)`;
         
         document.documentElement.style.setProperty('--primary-color', primaryColor);
         document.documentElement.style.setProperty('--accent-color', accentColor);
