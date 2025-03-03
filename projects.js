@@ -1,4 +1,3 @@
-
 const projectData = [
     {
         title: "Word Wizard Challenge",
@@ -29,21 +28,21 @@ const projectData = [
 // Function to add project cards to the container
 function addProjectCard() {
     const cardContainer = document.querySelector('.card-container');
-    
+
     // Create project card and add to container
     const projectCard = document.createElement('div');
     projectCard.className = 'card';
     projectCard.setAttribute('data-section', 'projects');
-    
+
     projectCard.innerHTML = `
         <div class="card-inner">
             <h2>Projects</h2>
             <div class="icon">💻</div>
         </div>
     `;
-    
+
     cardContainer.appendChild(projectCard);
-    
+
     // Add event listener for project card
     projectCard.addEventListener('click', () => {
         showPopup('Projects', generateProjectsContent());
@@ -53,7 +52,7 @@ function addProjectCard() {
 // Function to generate projects content for popup
 function generateProjectsContent() {
     let content = '<div class="projects-container">';
-    
+
     projectData.forEach(project => {
         content += `
             <div class="project-card">
@@ -64,7 +63,7 @@ function generateProjectsContent() {
             </div>
         `;
     });
-    
+
     content += '</div>';
     return content;
 }

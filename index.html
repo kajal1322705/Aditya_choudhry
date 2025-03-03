@@ -107,5 +107,14 @@
     <script src="wave.js"></script>
     <script src="projects.js"></script>
     <script src="script.js"></script>
+    <!-- Add fallback script to ensure everything loads -->
+    <script>
+        // Check if MultiverseBackground is available, if not provide fallback
+        if (typeof MultiverseBackground === 'undefined') {
+            console.log("Providing fallback background...");
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2');
+            document.documentElement.style.setProperty('--accent-color', '#357ab8');
+        }
+    </script>
 </body>
 </html>

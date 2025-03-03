@@ -1,4 +1,3 @@
-
 const resumeData = {
     summary: `
         <p>Innovative and passionate AI and automation developer with experience in bot development, AI-driven solutions, and automation. Active contributor to open-source projects, with multiple hackathon participations and bounty work. Strong problem-solving skills and a deep interest in decentralized AI, blockchain, and superintelligence.</p>
@@ -41,16 +40,16 @@ const resumeData = {
         <div class="skills-section">
             <h3>Programming & Backend</h3>
             <p>JavaScript, GoLang, Rust, Python, Java, Node.js, Express.js, GoFiber</p>
-            
+
             <h3>Databases & Messaging</h3>
             <p>PostgreSQL, Redis, Kafka</p>
-            
+
             <h3>AI & Blockchain</h3>
             <p>OpenAI, Deep Learning, NLP, RAG-based chatbots, Zero-Knowledge Proofs (ZKP), Smart Contracts</p>
-            
+
             <h3>Cloud & DevOps</h3>
             <p>AWS, Azure, Docker, Kubernetes, CI/CD</p>
-            
+
             <h3>Tools & Automation</h3>
             <p>Git, GitHub, Web Scraping</p>
         </div>
@@ -61,45 +60,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wait a bit for all scripts to load properly
     setTimeout(() => {
         try {
-            // Check if MultiverseBackground is defined
-            if (typeof MultiverseBackground === 'undefined') {
-                console.error("MultiverseBackground class is not defined!");
-                document.documentElement.style.setProperty('--primary-color', '#4a90e2');
-                document.documentElement.style.setProperty('--accent-color', '#357ab8');
-                return;
-            }
-            
-            // Initialize multiverse background
-            const multiverseBackground = new MultiverseBackground();
-            
+            // Simpler animation instead of MultiverseBackground
+            setInterval(() => {
+                document.documentElement.style.setProperty('--primary-color', `hsl(${Math.random() * 360}, 100%, 50%)`);
+                document.documentElement.style.setProperty('--accent-color', `hsl(${Math.random() * 360}, 100%, 60%)`);
+            }, 1000);
+
             // Add project card to main container
             if (typeof addProjectCard === 'function') {
                 addProjectCard();
             } else {
                 console.error("addProjectCard function is not defined!");
             }
-            
-            // Update UI colors based on multiverse background
-            setInterval(() => {
-                if (multiverseBackground && multiverseBackground.dimensionColors 
-                    && multiverseBackground.dimensionColors.length >= 2) {
-                    const primaryColor = `hsl(${multiverseBackground.dimensionColors[0].h}, ${multiverseBackground.dimensionColors[0].s}%, ${multiverseBackground.dimensionColors[0].l}%)`;
-                    const accentColor = `hsl(${multiverseBackground.dimensionColors[1].h}, ${multiverseBackground.dimensionColors[1].s}%, ${multiverseBackground.dimensionColors[1].l + 10}%)`;
-                    
-                    document.documentElement.style.setProperty('--primary-color', primaryColor);
-                    document.documentElement.style.setProperty('--accent-color', accentColor);
-                }
-            }, 100);
         } catch (err) {
             console.error("Initialization error:", err);
             // Fallback colors if animation fails
             document.documentElement.style.setProperty('--primary-color', '#4a90e2');
             document.documentElement.style.setProperty('--accent-color', '#357ab8');
-            document.documentElement.style.setProperty('--primary-color', '#4a90e2');
-            document.documentElement.style.setProperty('--accent-color', '#357ab8');
         }
     }, 200);
-    
+
     const cards = document.querySelectorAll('.card');
     const popup = document.querySelector('.popup-overlay');
     const popupTitle = popup.querySelector('.popup-header h2');
@@ -134,14 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-        
+
         // Here you would typically send this data to a server
         // For now, we'll open the default mail client
         window.location.href = `mailto:aditya.gardian@gmail.com?subject=Contact from ${name}&body=${message}%0A%0AFrom: ${name} (${email})`;
-        
+
         // Reset form
         emailForm.reset();
-        
+
         // Close the form
         contactForm.style.display = 'none';
         document.body.style.overflow = 'auto';
@@ -173,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Function to add project card to main container
 function addProjectCard() {
     const cardContainer = document.querySelector('.card-container');
-    
+
     // Create projects card
     const projectsCard = document.createElement('div');
     projectsCard.className = 'card';
@@ -183,13 +163,13 @@ function addProjectCard() {
             <div class="icon">💼</div>
         </div>
     `;
-    
+
     projectsCard.addEventListener('click', () => {
         showProjectsPopup();
     });
-    
+
     cardContainer.appendChild(projectsCard);
-    
+
     // Create projects popup content
     createProjectsPopup();
 }
@@ -199,7 +179,7 @@ function createProjectsPopup() {
     const projectsPopup = document.createElement('div');
     projectsPopup.className = 'popup-overlay';
     projectsPopup.id = 'projects-popup';
-    
+
     projectsPopup.innerHTML = `
         <div class="popup-content">
             <div class="popup-header">
@@ -211,35 +191,40 @@ function createProjectsPopup() {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(projectsPopup);
-    
-    // Add projects to container
+
+    // Add projects to container (placeholder data)
     const projectsContainer = projectsPopup.querySelector('#projects-container');
-    
+    const projectData = [
+        {icon: '💻', title: 'Project 1', description: 'Description 1', url: '#'},
+        {icon: '🤖', title: 'Project 2', description: 'Description 2', url: '#'},
+        {icon: '🌐', title: 'Project 3', description: 'Description 3', url: '#'}
+    ];
+
     projectData.forEach((project, index) => {
         const delay = index * 0.15;
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
         projectCard.style.animationDelay = `${delay}s`;
-        
+
         projectCard.innerHTML = `
             <div class="project-icon">${project.icon}</div>
             <h3>${project.title}</h3>
             <p>${project.description}</p>
             <a href="${project.url}" target="_blank" class="project-link">View Project</a>
         `;
-        
+
         projectsContainer.appendChild(projectCard);
     });
-    
+
     // Add close button functionality
     const closeBtn = projectsPopup.querySelector('.close-btn');
     closeBtn.addEventListener('click', () => {
         projectsPopup.style.display = 'none';
         document.body.style.overflow = 'auto';
     });
-    
+
     // Close on outside click
     projectsPopup.addEventListener('click', (e) => {
         if (e.target === projectsPopup) {

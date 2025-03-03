@@ -139,8 +139,3 @@ class MultiverseBackground {
 window.MultiverseBackground = MultiverseBackground;
 window.WaveBackground = MultiverseBackground;
 window.GalaxyBackground = MultiverseBackground;
-
-// Create aliases for backward compatibility
-window.MultiverseBackground = MultiverseBackground;
-window.WaveBackground = MultiverseBackground;
-window.GalaxyBackground = MultiverseBackground;
