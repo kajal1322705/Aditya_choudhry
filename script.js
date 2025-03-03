@@ -59,10 +59,19 @@ const resumeData = {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize wave background
-    new WaveBackground();
+    const waveBackground = new WaveBackground();
     
     // Display projects
     displayProjects();
+    
+    // Update UI colors based on wave background
+    setInterval(() => {
+        const primaryColor = `hsl(${waveBackground.baseColors[0].h}, ${waveBackground.baseColors[0].s}%, ${waveBackground.baseColors[0].l}%)`;
+        const accentColor = `hsl(${waveBackground.baseColors[1].h}, ${waveBackground.baseColors[1].s}%, ${waveBackground.baseColors[1].l + 10}%)`;
+        
+        document.documentElement.style.setProperty('--primary-color', primaryColor);
+        document.documentElement.style.setProperty('--accent-color', accentColor);
+    }, 100);
     
     const cards = document.querySelectorAll('.card');
     const popup = document.querySelector('.popup-overlay');
