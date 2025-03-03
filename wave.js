@@ -1,3 +1,4 @@
+
 class MultiverseBackground {
   constructor() {
     this.canvas = document.createElement('canvas');
@@ -9,12 +10,31 @@ class MultiverseBackground {
     this.canvas.width = this.width;
     this.canvas.height = this.height;
 
+    // Initialize dimension colors for UI integration
+    this.dimensionColors = [
+      { h: 270, s: 80, l: 65 }, // Purple (TVA)
+      { h: 190, s: 90, l: 60 }, // Blue (sacred timeline)
+      { h: 130, s: 90, l: 50 }, // Green (variants)
+      { h: 30, s: 100, l: 60 }, // Orange (kang variants)
+      { h: 340, s: 80, l: 60 }  // Red (danger)
+    ];
+
     this.canvas.style.position = 'fixed';
     this.canvas.style.top = '0';
     this.canvas.style.left = '0';
     this.canvas.style.zIndex = '-1';
     this.canvas.style.pointerEvents = 'none';
+    
+    // Add these event listeners with passive option for better performance
+    window.addEventListener('resize', () => this.onResize(), { passive: true });
+    window.addEventListener('mousemove', (e) => this.onMouseMove(e), { passive: true });
+    
+    // Setup multiverse
+    this.setupMultiverse();
+    this.animate();
+  }
 
+  setupMultiverse() {
     // Multiverse timelines
     this.timelines = [];
     this.timelineCount = 12;
@@ -53,27 +73,11 @@ class MultiverseBackground {
     this.mouseRadius = 150;
     this.mouseInfluence = 0.1;
 
-    // Base colors for different dimensions
-    this.dimensionColors = [
-      { h: 270, s: 80, l: 65 }, // Purple (TVA)
-      { h: 190, s: 90, l: 60 }, // Blue (sacred timeline)
-      { h: 130, s: 90, l: 50 }, // Green (variants)
-      { h: 30, s: 100, l: 60 }, // Orange (kang variants)
-      { h: 340, s: 80, l: 60 }  // Red (danger)
-    ];
-
     // Time variables
     this.time = 0;
     this.timeSpeed = 0.002;
     this.pruningCounter = 0;
     this.nextPruning = Math.random() * 1000 + 500;
-
-    // Event listeners
-    window.addEventListener('resize', () => this.onResize(), { passive: true });
-    window.addEventListener('mousemove', (e) => this.onMouseMove(e), { passive: true });
-    window.addEventListener('click', () => this.createNexusEvent(this.mouseX, this.mouseY), { passive: true });
-
-    this.animate();
   }
 
   initTimelines() {
@@ -308,11 +312,7 @@ class MultiverseBackground {
     this.canvas.height = this.height;
 
     // Reinitialize all elements
-    this.initTimelines();
-    this.initSacredTimeline();
-    this.initNexusEvents();
-    this.initPortals();
-    this.initParticles();
+    this.setupMultiverse();
   }
 
   onMouseMove(e) {
@@ -738,15 +738,6 @@ class MultiverseBackground {
 
     // Continue animation loop
     requestAnimationFrame(() => this.animate());
-  }
-  
-  // Initialize dimensions for color variation
-  initDimensionColors() {
-    this.dimensionColors = [
-      { h: 210, s: 90, l: 60 },
-      { h: 270, s: 90, l: 60 },
-      { h: 330, s: 90, l: 60 }
-    ];
   }
 }
 

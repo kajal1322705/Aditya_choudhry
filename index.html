@@ -5,6 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aditya Choudhry - Interactive Resume</title>
     <link rel="stylesheet" href="style.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Nath - Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="profile-section">
+            <div class="profile-image">
+                <div class="avatar"></div>
+            </div>
+            <h1>Aditya Nath</h1>
+            <p class="contact-info">AI & Automation Developer | Open Source Contributor</p>
+            <button id="contact-btn" class="contact-button">Contact Me</button>
+        </div>
+    </header>
+
+    <div class="card-container">
+        <div class="card" data-section="summary">
+            <div class="card-inner">
+                <h2>Summary</h2>
+                <div class="icon">📋</div>
+            </div>
+        </div>
+        <div class="card" data-section="experience">
+            <div class="card-inner">
+                <h2>Experience</h2>
+                <div class="icon">💼</div>
+            </div>
+        </div>
+        <div class="card" data-section="education">
+            <div class="card-inner">
+                <h2>Education</h2>
+                <div class="icon">🎓</div>
+            </div>
+        </div>
+        <div class="card" data-section="skills">
+            <div class="card-inner">
+                <h2>Skills</h2>
+                <div class="icon">🛠️</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Section Title</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-overlay" id="contact-form">
+        <div class="contact-popup">
+            <div class="contact-header">
+                <h2>Contact Me</h2>
+                <button class="close-contact-btn">&times;</button>
+            </div>
+            <div class="contact-body">
+                <form id="email-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
@@ -101,4 +185,5 @@
     <script src="projects.js"></script>
     <script src="script.js"></script>
 </body>
+</html>dy>
 </html>
