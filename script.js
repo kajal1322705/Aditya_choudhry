@@ -61,11 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wait a bit for all scripts to load properly
     setTimeout(() => {
         try {
+            // Check if MultiverseBackground is defined
+            if (typeof MultiverseBackground === 'undefined') {
+                console.error("MultiverseBackground class is not defined!");
+                document.documentElement.style.setProperty('--primary-color', '#4a90e2');
+                document.documentElement.style.setProperty('--accent-color', '#357ab8');
+                return;
+            }
+            
             // Initialize multiverse background
             const multiverseBackground = new MultiverseBackground();
             
             // Add project card to main container
-            addProjectCard();
+            if (typeof addProjectCard === 'function') {
+                addProjectCard();
+            } else {
+                console.error("addProjectCard function is not defined!");
+            }
             
             // Update UI colors based on multiverse background
             setInterval(() => {
@@ -81,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
             console.error("Initialization error:", err);
             // Fallback colors if animation fails
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2');
+            document.documentElement.style.setProperty('--accent-color', '#357ab8');
             document.documentElement.style.setProperty('--primary-color', '#4a90e2');
             document.documentElement.style.setProperty('--accent-color', '#357ab8');
         }

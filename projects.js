@@ -22,35 +22,49 @@ const projectData = [
         title: "Trend Finder",
         description: "Data analysis tool for identifying trends in large datasets and market movements.",
         url: "https://github.com/aditya-sphereoutsourcing/trendFinder",
-        icon: "📊"📊"
+        icon: "📊"
     }
 ];
 
-function displayProjects() {
-    const projectsSection = document.createElement('div');
-    projectsSection.className = 'projects-section';
-    projectsSection.innerHTML = `
-        <h2 class="projects-heading">Projects</h2>
-        <div class="projects-container" id="projects-container"></div>
+// Function to add project cards to the container
+function addProjectCard() {
+    const cardContainer = document.querySelector('.card-container');
+    
+    // Create project card and add to container
+    const projectCard = document.createElement('div');
+    projectCard.className = 'card';
+    projectCard.setAttribute('data-section', 'projects');
+    
+    projectCard.innerHTML = `
+        <div class="card-inner">
+            <h2>Projects</h2>
+            <div class="icon">💻</div>
+        </div>
     `;
     
-    document.body.insertBefore(projectsSection, document.querySelector('.popup-overlay'));
+    cardContainer.appendChild(projectCard);
     
-    const projectsContainer = document.getElementById('projects-container');
-    
-    projectData.forEach((project, index) => {
-        const delay = index * 0.15;
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
-        projectCard.style.animationDelay = `${delay}s`;
-        
-        projectCard.innerHTML = `
-            <div class="project-icon">${project.icon}</div>
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <a href="${project.url}" target="_blank" class="project-link">View Project</a>
-        `;
-        
-        projectsContainer.appendChild(projectCard);
+    // Add event listener for project card
+    projectCard.addEventListener('click', () => {
+        showPopup('Projects', generateProjectsContent());
     });
+}
+
+// Function to generate projects content for popup
+function generateProjectsContent() {
+    let content = '<div class="projects-container">';
+    
+    projectData.forEach(project => {
+        content += `
+            <div class="project-card">
+                <div class="project-icon">${project.icon}</div>
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <a href="${project.url}" target="_blank" class="project-link">View Project</a>
+            </div>
+        `;
+    });
+    
+    content += '</div>';
+    return content;
 }
