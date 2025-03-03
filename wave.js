@@ -31,8 +31,9 @@ class WaveBackground {
     this.canvas.style.zIndex = '-1';
     this.canvas.style.pointerEvents = 'none';
     
-    window.addEventListener('resize', () => this.onResize());
-    window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    // Add these event listeners with passive option for better performance
+    window.addEventListener('resize', () => this.onResize(), { passive: true });
+    window.addEventListener('mousemove', (e) => this.onMouseMove(e), { passive: true });
     
     this.animate();
   }
@@ -41,6 +42,59 @@ class WaveBackground {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.canvas.width = this.width;
+
+    // Update the base colors based on mouse position
+    this.baseColors[0].h = (210 + hueChange) % 360;
+    this.baseColors[1].h = (210 + hueChange + 30) % 360;
+    this.baseColors[2].h = (210 + hueChange - 30) % 360;
+    
+    // Update last position for smoother mouse movement
+    this.lastX = mouseX;
+    this.lastY = mouseY;
+  }
+  
+  animate() {
+    // Clear canvas with semi-transparent background for trail effect
+    this.ctx.fillStyle = 'rgba(26, 26, 26, 0.1)';
+    this.ctx.fillRect(0, 0, this.width, this.height);
+    
+    // Draw waves
+    for (let i = 0; i < this.wavesNumber; i++) {
+      // Create dynamic wave motion
+      this.stepsX[i] += 0.01 + (i * 0.005);
+      this.stepsY[i] += 0.01 + (i * 0.005);
+      
+      // Calculate wave positions
+      const xOffset = Math.sin(this.stepsX[i]) * 100;
+      const yOffset = Math.cos(this.stepsY[i]) * 100;
+      
+      // Draw gradient wave
+      const gradient = this.ctx.createRadialGradient(
+        this.lastX + xOffset, this.lastY + yOffset, 0,
+        this.lastX + xOffset, this.lastY + yOffset, this.width / (3 - i)
+      );
+      
+      const baseColor = this.baseColors[i];
+      gradient.addColorStop(0, `hsla(${baseColor.h}, ${baseColor.s}%, ${baseColor.l}%, 0.8)`);
+      gradient.addColorStop(1, `hsla(${baseColor.h}, ${baseColor.s}%, ${baseColor.l}%, 0)`);
+      
+      this.ctx.beginPath();
+      this.ctx.arc(
+        this.lastX + xOffset, 
+        this.lastY + yOffset, 
+        this.width / (4 - i), 
+        0, 
+        Math.PI * 2
+      );
+      this.ctx.fillStyle = gradient;
+      this.ctx.fill();
+    }
+    
+    // Request next animation frame
+    requestAnimationFrame(() => this.animate());
+  }
+}
+
     this.canvas.height = this.height;
   }
   

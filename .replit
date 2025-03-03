@@ -17,3 +17,21 @@ args = "npx serve ."
 [[ports]]
 localPort = 3000
 externalPort = 80
+run = "npx serve ."
+
+[deployment]
+run = ["sh", "-c", "npx serve ."]
+
+[[deployment.responseHeaders]]
+path = "/*"
+name = "Content-Security-Policy"
+value = "upgrade-insecure-requests"
+
+[[deployment.responseHeaders]]
+path = "/*"
+name = "Strict-Transport-Security"
+value = "max-age=31536000; includeSubDomains"
+
+[[deployment.rewrites]]
+from = "/*"
+to = "/index.html"
