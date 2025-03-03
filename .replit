@@ -2,3 +2,18 @@ modules = ["nodejs-20", "web"]
 
 [nix]
 channel = "stable-24_05"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 40157245
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx serve ."
+
+[[ports]]
+localPort = 3000
+externalPort = 80
