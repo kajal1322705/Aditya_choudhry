@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
     document.body.appendChild(loadingScreen);
 
-    // Initialize galaxy background
-    const galaxyBackground = new GalaxyBackground();
+    // Initialize multiverse background
+    const multiverseBackground = new MultiverseBackground();
     
     // Add project card to main container
     addProjectCard();
@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }, 1500);
     
-    // Update UI colors based on galaxy background
+    // Update UI colors based on multiverse background
     setInterval(() => {
-        const primaryColor = `hsl(${galaxyBackground.baseColors[0].h}, ${galaxyBackground.baseColors[0].s}%, ${galaxyBackground.baseColors[0].l}%)`;
-        const accentColor = `hsl(${galaxyBackground.baseColors[1].h}, ${galaxyBackground.baseColors[1].s}%, ${galaxyBackground.baseColors[1].l + 10}%)`;
+        const primaryColor = `hsl(${multiverseBackground.dimensionColors[0].h}, ${multiverseBackground.dimensionColors[0].s}%, ${multiverseBackground.dimensionColors[0].l}%)`;
+        const accentColor = `hsl(${multiverseBackground.dimensionColors[1].h}, ${multiverseBackground.dimensionColors[1].s}%, ${multiverseBackground.dimensionColors[1].l + 10}%)`;
         
         document.documentElement.style.setProperty('--primary-color', primaryColor);
         document.documentElement.style.setProperty('--accent-color', accentColor);
