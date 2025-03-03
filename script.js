@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize wave background
     const waveBackground = new WaveBackground();
     
-    // Create dock menu
-    createDock();
+    // Add project card to main container
+    addProjectCard();
     
     // Hide loading screen after everything is loaded
     setTimeout(() => {
@@ -158,102 +158,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Function to create the dock menu
-function createDock() {
-    const dockContainer = document.createElement('div');
-    dockContainer.className = 'dock-container';
+// Function to add project card to main container
+function addProjectCard() {
+    const cardContainer = document.querySelector('.card-container');
     
-    // Array of dock items
-    const dockItems = [
-        { icon: '📋', label: 'Resume', action: () => showResume() },
-        { icon: '💼', label: 'Projects', action: () => toggleProjects() },
-        { icon: '📞', label: 'Contact', action: () => showContact() }
-    ];
+    // Create projects card
+    const projectsCard = document.createElement('div');
+    projectsCard.className = 'card';
+    projectsCard.innerHTML = `
+        <div class="card-inner">
+            <h2>Projects</h2>
+            <div class="icon">💼</div>
+        </div>
+    `;
     
-    // Create dock items
-    dockItems.forEach((item, index) => {
-        const dockItem = document.createElement('div');
-        dockItem.className = 'dock-item';
-        dockItem.setAttribute('data-index', index);
-        dockItem.innerHTML = `
-            <div class="dock-item-icon">${item.icon}</div>
-            <div class="dock-item-label">${item.label}</div>
-        `;
-        
-        dockItem.addEventListener('click', () => {
-            // Remove active class from all items
-            document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active'));
-            // Add active class to clicked item
-            dockItem.classList.add('active');
-            // Execute the action
-            item.action();
-        });
-        
-        // Add dock hover effect
-        dockItem.addEventListener('mouseover', () => updateDockHoverEffect(index));
-        dockItem.addEventListener('mouseout', () => resetDockHoverEffect());
-        
-        dockContainer.appendChild(dockItem);
+    projectsCard.addEventListener('click', () => {
+        showProjectsPopup();
     });
     
-    document.body.appendChild(dockContainer);
+    cardContainer.appendChild(projectsCard);
     
-    // Create projects section (hidden by default)
-    displayProjects();
+    // Create projects popup content
+    createProjectsPopup();
 }
 
-// Function to update dock hover effect
-function updateDockHoverEffect(hoveredIndex) {
-    const dockItems = document.querySelectorAll('.dock-item');
+// Function to create projects popup
+function createProjectsPopup() {
+    const projectsPopup = document.createElement('div');
+    projectsPopup.className = 'popup-overlay';
+    projectsPopup.id = 'projects-popup';
     
-    dockItems.forEach((item, index) => {
-        item.classList.remove('dock-neighbors-1', 'dock-neighbors-2');
+    projectsPopup.innerHTML = `
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Projects</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="projects-container" id="projects-container"></div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(projectsPopup);
+    
+    // Add projects to container
+    const projectsContainer = projectsPopup.querySelector('#projects-container');
+    
+    projectData.forEach((project, index) => {
+        const delay = index * 0.15;
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        projectCard.style.animationDelay = `${delay}s`;
         
-        const distance = Math.abs(index - hoveredIndex);
+        projectCard.innerHTML = `
+            <div class="project-icon">${project.icon}</div>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <a href="${project.url}" target="_blank" class="project-link">View Project</a>
+        `;
         
-        if (distance === 1) {
-            item.classList.add('dock-neighbors-1');
-        } else if (distance === 2) {
-            item.classList.add('dock-neighbors-2');
+        projectsContainer.appendChild(projectCard);
+    });
+    
+    // Add close button functionality
+    const closeBtn = projectsPopup.querySelector('.close-btn');
+    closeBtn.addEventListener('click', () => {
+        projectsPopup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Close on outside click
+    projectsPopup.addEventListener('click', (e) => {
+        if (e.target === projectsPopup) {
+            projectsPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     });
 }
 
-// Function to reset dock hover effect
-function resetDockHoverEffect() {
-    const dockItems = document.querySelectorAll('.dock-item');
-    dockItems.forEach(item => {
-        item.classList.remove('dock-neighbors-1', 'dock-neighbors-2');
-    });
-}
-
-// Function to show resume (opens resume cards)
-function showResume() {
-    // Hide projects section if visible
-    const projectsSection = document.querySelector('.projects-section');
-    if (projectsSection) {
-        projectsSection.classList.remove('active');
-    }
-}
-
-// Function to toggle projects visibility
-function toggleProjects() {
-    const projectsSection = document.querySelector('.projects-section');
-    if (projectsSection) {
-        projectsSection.classList.toggle('active');
-    }
-}
-
-// Function to show contact form
-function showContact() {
-    // Hide projects section if visible
-    const projectsSection = document.querySelector('.projects-section');
-    if (projectsSection) {
-        projectsSection.classList.remove('active');
-    }
-    
-    // Show contact form
-    const contactForm = document.getElementById('contact-form');
-    contactForm.style.display = 'flex';
+// Function to show projects popup
+function showProjectsPopup() {
+    const projectsPopup = document.getElementById('projects-popup');
+    projectsPopup.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
