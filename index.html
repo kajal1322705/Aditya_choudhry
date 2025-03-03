@@ -96,6 +96,14 @@
         </div>
     </div>
 
+    <!-- Load scripts in correct order with proper error handling -->
+    <script>
+        // Handle script loading errors
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error("Script error:", message, "at", source, "line:", lineno);
+            return true;
+        };
+    </script>
     <script src="wave.js"></script>
     <script src="projects.js"></script>
     <script src="script.js"></script>

@@ -22,7 +22,7 @@ const projectData = [
         title: "Trend Finder",
         description: "Data analysis tool for identifying trends in large datasets and market movements.",
         url: "https://github.com/aditya-sphereoutsourcing/trendFinder",
-        icon: "📊"
+        icon: "📊"📊"
     }
 ];
 

@@ -58,24 +58,33 @@ const resumeData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    try {
-        // Initialize multiverse background
-        const multiverseBackground = new MultiverseBackground();
-        
-        // Add project card to main container
-        addProjectCard();
-        
-        // Update UI colors based on multiverse background
-        setInterval(() => {
-        const primaryColor = `hsl(${multiverseBackground.dimensionColors[0].h}, ${multiverseBackground.dimensionColors[0].s}%, ${multiverseBackground.dimensionColors[0].l}%)`;
-        const accentColor = `hsl(${multiverseBackground.dimensionColors[1].h}, ${multiverseBackground.dimensionColors[1].s}%, ${multiverseBackground.dimensionColors[1].l + 10}%)`;
-        
-        document.documentElement.style.setProperty('--primary-color', primaryColor);
-        document.documentElement.style.setProperty('--accent-color', accentColor);
-    }, 100);
-    } catch (err) {
-        console.error("Initialization error:", err);
-    }
+    // Wait a bit for all scripts to load properly
+    setTimeout(() => {
+        try {
+            // Initialize multiverse background
+            const multiverseBackground = new MultiverseBackground();
+            
+            // Add project card to main container
+            addProjectCard();
+            
+            // Update UI colors based on multiverse background
+            setInterval(() => {
+                if (multiverseBackground && multiverseBackground.dimensionColors 
+                    && multiverseBackground.dimensionColors.length >= 2) {
+                    const primaryColor = `hsl(${multiverseBackground.dimensionColors[0].h}, ${multiverseBackground.dimensionColors[0].s}%, ${multiverseBackground.dimensionColors[0].l}%)`;
+                    const accentColor = `hsl(${multiverseBackground.dimensionColors[1].h}, ${multiverseBackground.dimensionColors[1].s}%, ${multiverseBackground.dimensionColors[1].l + 10}%)`;
+                    
+                    document.documentElement.style.setProperty('--primary-color', primaryColor);
+                    document.documentElement.style.setProperty('--accent-color', accentColor);
+                }
+            }, 100);
+        } catch (err) {
+            console.error("Initialization error:", err);
+            // Fallback colors if animation fails
+            document.documentElement.style.setProperty('--primary-color', '#4a90e2');
+            document.documentElement.style.setProperty('--accent-color', '#357ab8');
+        }
+    }, 200);
     
     const cards = document.querySelectorAll('.card');
     const popup = document.querySelector('.popup-overlay');
