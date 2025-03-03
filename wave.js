@@ -739,8 +739,17 @@ class MultiverseBackground {
     // Continue animation loop
     requestAnimationFrame(() => this.animate());
   }
+  
+  // Initialize dimensions for color variation
+  initDimensionColors() {
+    this.dimensionColors = [
+      { h: 210, s: 90, l: 60 },
+      { h: 270, s: 90, l: 60 },
+      { h: 330, s: 90, l: 60 }
+    ];
+  }
 }
 
-// Alias for backward compatibility with existing code
+// Create aliases for backward compatibility
 window.WaveBackground = MultiverseBackground;
 window.GalaxyBackground = MultiverseBackground;

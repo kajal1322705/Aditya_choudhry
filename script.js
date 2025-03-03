@@ -58,26 +58,11 @@ const resumeData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Show loading screen
-    const loadingScreen = document.createElement('div');
-    loadingScreen.className = 'loading-screen';
-    loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
-    document.body.appendChild(loadingScreen);
-
     // Initialize multiverse background
     const multiverseBackground = new MultiverseBackground();
     
     // Add project card to main container
     addProjectCard();
-    
-    // Hide loading screen after everything is loaded
-    setTimeout(() => {
-        loadingScreen.style.opacity = '0';
-        loadingScreen.style.visibility = 'hidden';
-        setTimeout(() => {
-            loadingScreen.remove();
-        }, 500);
-    }, 1500);
     
     // Update UI colors based on multiverse background
     setInterval(() => {
