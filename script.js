@@ -58,11 +58,26 @@ const resumeData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Show loading screen
+    const loadingScreen = document.createElement('div');
+    loadingScreen.className = 'loading-screen';
+    loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
+    document.body.appendChild(loadingScreen);
+
     // Initialize wave background
     const waveBackground = new WaveBackground();
     
-    // Display projects
-    displayProjects();
+    // Create dock menu
+    createDock();
+    
+    // Hide loading screen after everything is loaded
+    setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.visibility = 'hidden';
+        setTimeout(() => {
+            loadingScreen.remove();
+        }, 500);
+    }, 1500);
     
     // Update UI colors based on wave background
     setInterval(() => {
@@ -142,3 +157,103 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Function to create the dock menu
+function createDock() {
+    const dockContainer = document.createElement('div');
+    dockContainer.className = 'dock-container';
+    
+    // Array of dock items
+    const dockItems = [
+        { icon: '📋', label: 'Resume', action: () => showResume() },
+        { icon: '💼', label: 'Projects', action: () => toggleProjects() },
+        { icon: '📞', label: 'Contact', action: () => showContact() }
+    ];
+    
+    // Create dock items
+    dockItems.forEach((item, index) => {
+        const dockItem = document.createElement('div');
+        dockItem.className = 'dock-item';
+        dockItem.setAttribute('data-index', index);
+        dockItem.innerHTML = `
+            <div class="dock-item-icon">${item.icon}</div>
+            <div class="dock-item-label">${item.label}</div>
+        `;
+        
+        dockItem.addEventListener('click', () => {
+            // Remove active class from all items
+            document.querySelectorAll('.dock-item').forEach(i => i.classList.remove('active'));
+            // Add active class to clicked item
+            dockItem.classList.add('active');
+            // Execute the action
+            item.action();
+        });
+        
+        // Add dock hover effect
+        dockItem.addEventListener('mouseover', () => updateDockHoverEffect(index));
+        dockItem.addEventListener('mouseout', () => resetDockHoverEffect());
+        
+        dockContainer.appendChild(dockItem);
+    });
+    
+    document.body.appendChild(dockContainer);
+    
+    // Create projects section (hidden by default)
+    displayProjects();
+}
+
+// Function to update dock hover effect
+function updateDockHoverEffect(hoveredIndex) {
+    const dockItems = document.querySelectorAll('.dock-item');
+    
+    dockItems.forEach((item, index) => {
+        item.classList.remove('dock-neighbors-1', 'dock-neighbors-2');
+        
+        const distance = Math.abs(index - hoveredIndex);
+        
+        if (distance === 1) {
+            item.classList.add('dock-neighbors-1');
+        } else if (distance === 2) {
+            item.classList.add('dock-neighbors-2');
+        }
+    });
+}
+
+// Function to reset dock hover effect
+function resetDockHoverEffect() {
+    const dockItems = document.querySelectorAll('.dock-item');
+    dockItems.forEach(item => {
+        item.classList.remove('dock-neighbors-1', 'dock-neighbors-2');
+    });
+}
+
+// Function to show resume (opens resume cards)
+function showResume() {
+    // Hide projects section if visible
+    const projectsSection = document.querySelector('.projects-section');
+    if (projectsSection) {
+        projectsSection.classList.remove('active');
+    }
+}
+
+// Function to toggle projects visibility
+function toggleProjects() {
+    const projectsSection = document.querySelector('.projects-section');
+    if (projectsSection) {
+        projectsSection.classList.toggle('active');
+    }
+}
+
+// Function to show contact form
+function showContact() {
+    // Hide projects section if visible
+    const projectsSection = document.querySelector('.projects-section');
+    if (projectsSection) {
+        projectsSection.classList.remove('active');
+    }
+    
+    // Show contact form
+    const contactForm = document.getElementById('contact-form');
+    contactForm.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
