@@ -1,3 +1,4 @@
+
 const resumeData = {
     summary: `
         <p>Innovative and passionate AI and automation developer with experience in bot development, AI-driven solutions, and automation. Active contributor to open-source projects, with multiple hackathon participations and bounty work. Strong problem-solving skills and a deep interest in decentralized AI, blockchain, and superintelligence.</p>
@@ -57,11 +58,58 @@ const resumeData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize wave background
+    new WaveBackground();
+    
+    // Display projects
+    displayProjects();
+    
     const cards = document.querySelectorAll('.card');
     const popup = document.querySelector('.popup-overlay');
     const popupTitle = popup.querySelector('.popup-header h2');
     const popupBody = popup.querySelector('.popup-body');
     const closeBtn = popup.querySelector('.close-btn');
+
+    // Contact form functionality
+    const contactBtn = document.getElementById('contact-btn');
+    const contactForm = document.getElementById('contact-form');
+    const closeContactBtn = document.querySelector('.close-contact-btn');
+    const emailForm = document.getElementById('email-form');
+
+    contactBtn.addEventListener('click', () => {
+        contactForm.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeContactBtn.addEventListener('click', () => {
+        contactForm.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    contactForm.addEventListener('click', (e) => {
+        if (e.target === contactForm) {
+            contactForm.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    emailForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Here you would typically send this data to a server
+        // For now, we'll open the default mail client
+        window.location.href = `mailto:aditya.gardian@gmail.com?subject=Contact from ${name}&body=${message}%0A%0AFrom: ${name} (${email})`;
+        
+        // Reset form
+        emailForm.reset();
+        
+        // Close the form
+        contactForm.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
