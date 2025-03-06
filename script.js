@@ -57,12 +57,7 @@ const resumeData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Add project card immediately
-    if (typeof addProjectCard === 'function') {
-        addProjectCard();
-    } else {
-        console.error("addProjectCard function is not defined!");
-    }
+    // Projects card is now in HTML directly, no need to add it dynamically
     
     // Set up background animation
     try {
