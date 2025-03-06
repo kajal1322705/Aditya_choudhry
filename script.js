@@ -57,28 +57,26 @@ const resumeData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Wait a bit for all scripts to load properly
-    setTimeout(() => {
-        try {
-            // Simpler animation instead of MultiverseBackground
-            setInterval(() => {
-                document.documentElement.style.setProperty('--primary-color', `hsl(${Math.random() * 360}, 100%, 50%)`);
-                document.documentElement.style.setProperty('--accent-color', `hsl(${Math.random() * 360}, 100%, 60%)`);
-            }, 1000);
-
-            // Add project card to main container
-            if (typeof addProjectCard === 'function') {
-                addProjectCard();
-            } else {
-                console.error("addProjectCard function is not defined!");
-            }
-        } catch (err) {
-            console.error("Initialization error:", err);
-            // Fallback colors if animation fails
-            document.documentElement.style.setProperty('--primary-color', '#4a90e2');
-            document.documentElement.style.setProperty('--accent-color', '#357ab8');
-        }
-    }, 200);
+    // Add project card immediately
+    if (typeof addProjectCard === 'function') {
+        addProjectCard();
+    } else {
+        console.error("addProjectCard function is not defined!");
+    }
+    
+    // Set up background animation
+    try {
+        // Simpler animation for background colors
+        setInterval(() => {
+            document.documentElement.style.setProperty('--primary-color', `hsl(${Math.random() * 360}, 100%, 50%)`);
+            document.documentElement.style.setProperty('--accent-color', `hsl(${Math.random() * 360}, 100%, 60%)`);
+        }, 1000);
+    } catch (err) {
+        console.error("Animation initialization error:", err);
+        // Fallback colors if animation fails
+        document.documentElement.style.setProperty('--primary-color', '#4a90e2');
+        document.documentElement.style.setProperty('--accent-color', '#357ab8');
+    }
 
     const cards = document.querySelectorAll('.card');
     const popup = document.querySelector('.popup-overlay');
