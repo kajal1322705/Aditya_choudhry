@@ -140,5 +140,5 @@ function showProjectsPopup() {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         addProjectCard();
-    }, 500); // Small delay to ensure other elements are loaded
+    }, 500); // Small delay to ensure other elements load first are loaded
 });
