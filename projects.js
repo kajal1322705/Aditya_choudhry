@@ -1,4 +1,3 @@
-
 // Project data
 const projectData = [
     {
@@ -75,7 +74,7 @@ function addProjectCard() {
 
         cardContainer.appendChild(projectsCard);
     }
-    
+
     // Create projects popup if it doesn't exist
     if (!document.getElementById('projects-popup')) {
         createProjectsPopup();
