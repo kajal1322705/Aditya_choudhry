@@ -1,3 +1,5 @@
+
+// Project data
 const projectData = [
     {
         icon: '🤖',
@@ -29,55 +31,58 @@ const projectData = [
     }
 ];
 
-// Function to create project cards
+// Function to create a project card element
 function createProjectCard(project, index) {
     const delay = index * 0.15;
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.style.animationDelay = `${delay}s`;
+    const projectCard = document.createElement('div');
+    projectCard.className = 'project-card';
+    projectCard.style.animationDelay = `${delay}s`;
 
-    const techBadges = project.technologies.map(tech => 
-        `<span class="tech-badge">${tech}</span>`
-    ).join('');
-
-    card.innerHTML = `
-        <div class="project-header" style="background: ${project.color}">
-            <div class="project-icon">${project.icon}</div>
+    // Create HTML for project card
+    projectCard.innerHTML = `
+        <div class="project-icon">${project.icon}</div>
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <div class="tech-stack">
+            ${project.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
         </div>
-        <div class="project-content">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="tech-stack">
-                ${techBadges}
-            </div>
-            <a href="#" class="project-link">View Details</a>
-        </div>
+        <a href="#" class="project-link">View Project</a>
     `;
 
-    return card;
+    return projectCard;
 }
 
-// Function to display projects in the popup
-function showProjectsPopup() {
-    const projectsPopup = document.getElementById('projects-popup');
-    if (!projectsPopup) {
-        createProjectsPopup();
-        return;
+// Function to add project card to main container
+function addProjectCard() {
+    const cardContainer = document.querySelector('.card-container');
+    if (!cardContainer) return;
+
+    // Create projects card if it doesn't exist already
+    if (!document.querySelector('.card[data-section="projects"]')) {
+        const projectsCard = document.createElement('div');
+        projectsCard.className = 'card';
+        projectsCard.setAttribute('data-section', 'projects');
+        projectsCard.innerHTML = `
+            <div class="card-inner">
+                <h2>Projects</h2>
+                <div class="icon">💼</div>
+            </div>
+        `;
+
+        projectsCard.addEventListener('click', () => {
+            showProjectsPopup();
+        });
+
+        cardContainer.appendChild(projectsCard);
     }
-
-    projectsPopup.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-
-    // Add animation class to project cards
-    const cards = projectsPopup.querySelectorAll('.project-card');
-    cards.forEach((card, index) => {
-        setTimeout(() => {
-            card.classList.add('animate');
-        }, index * 150);
-    });
+    
+    // Create projects popup if it doesn't exist
+    if (!document.getElementById('projects-popup')) {
+        createProjectsPopup();
+    }
 }
 
-// Function to create the projects popup
+// Function to create projects popup
 function createProjectsPopup() {
     const projectsPopup = document.createElement('div');
     projectsPopup.className = 'popup-overlay';
@@ -119,30 +124,22 @@ function createProjectsPopup() {
             document.body.style.overflow = 'auto';
         }
     });
-
-    // Display the popup
-    showProjectsPopup();
 }
 
-// Function to add project card to main container
-function addProjectCard() {
-    const cardContainer = document.querySelector('.card-container');
-    if (!cardContainer) return;
-
-    // Create projects card
-    const projectsCard = document.createElement('div');
-    projectsCard.className = 'card';
-    projectsCard.setAttribute('data-section', 'projects');
-    projectsCard.innerHTML = `
-        <div class="card-inner">
-            <h2>Projects</h2>
-            <div class="icon">💼</div>
-        </div>
-    `;
-
-    projectsCard.addEventListener('click', () => {
-        showProjectsPopup();
-    });
-
-    cardContainer.appendChild(projectsCard);
+// Function to show projects popup
+function showProjectsPopup() {
+    const projectsPopup = document.getElementById('projects-popup');
+    if (projectsPopup) {
+        projectsPopup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    } else {
+        createProjectsPopup();
+    }
 }
+
+// Initialize projects when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        addProjectCard();
+    }, 500); // Small delay to ensure other elements are loaded
+});
