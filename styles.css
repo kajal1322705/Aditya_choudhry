@@ -633,6 +633,318 @@ body {
     margin: 0.5rem 0;
 }
 
+.achievements-title {
+    color: var(--light-text);
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.achievements-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.achievements-list li {
+    color: var(--gray-text);
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    line-height: 1.6;
+}
+
+.achievements-list i {
+    color: var(--primary-color);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.closing-statement {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: var(--gray-text);
+}
+
+.experience {
+    background: var(--darker-bg);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.timeline-item.animate {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 11px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 4px solid var(--darker-bg);
+    box-shadow: 0 0 0 4px var(--card-bg);
+    z-index: 1;
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-color);
+}
+
+.timeline-header h3 {
+    color: var(--light-text);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-header .company,
+.timeline-header .duration,
+.timeline-header .location {
+    display: block;
+    color: var(--gray-text);
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.timeline-header .company {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.timeline-header i {
+    margin-right: 0.5rem;
+}
+
+.timeline-description {
+    list-style: none;
+    margin-top: 1.5rem;
+    padding: 0;
+}
+
+.timeline-description li {
+    color: var(--gray-text);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.timeline-description li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.education {
+    background: rgba(30, 41, 59, 0.3);
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.education-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.education-card.animate {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.education-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-color);
+}
+
+.edu-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.education-card h3 {
+    color: var(--light-text);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.education-card h4 {
+    color: var(--secondary-color);
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.edu-duration,
+.edu-grade,
+.edu-specialization {
+    color: var(--gray-text);
+    margin: 0.5rem 0;
+}
+
+.edu-grade {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.edu-activities {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.edu-activities p {
+    color: var(--light-text);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.edu-activities ul {
+    list-style: none;
+    padding: 0;
+}
+
+.edu-activities li {
+    color: var(--gray-text);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.edu-activities li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.certifications-subtitle {
+    text-align: center;
+    color: var(--light-text);
+    font-size: 1.75rem;
+    margin: 3rem 0 2rem;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.certification-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.certification-card.animate {
+    animation: scaleIn 0.6s ease forwards;
+}
+
+.certification-card:hover {
+    transform: translateY(-10px) scale(1);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+    border-color: var(--primary-color);
+}
+
+.cert-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.certification-card h4 {
+    color: var(--light-text);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.cert-issuer {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.cert-date {
+    color: var(--gray-text);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.cert-link {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.cert-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cert-link i {
+    margin-right: 0.5rem;
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         gap: 1rem;
@@ -667,6 +979,26 @@ body {
     }
 
     .contact-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item {
+        padding-left: 40px;
+    }
+
+    .timeline-dot {
+        left: 1px;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certifications-grid {
         grid-template-columns: 1fr;
     }
 }

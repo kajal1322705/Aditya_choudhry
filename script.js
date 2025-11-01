@@ -166,7 +166,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.about-text, .about-image, .skill-category').forEach(el => {
+document.querySelectorAll('.about-text, .about-image, .skill-category, .timeline-item, .education-card, .certification-card').forEach(el => {
     observer.observe(el);
 });
 

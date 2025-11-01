@@ -1,0 +1,201 @@
+Aditya choudhry 
+ He/Him
+Full Stack & AI Software Engineer
+
+Hawk Sense Business Solutions Pvt Ltd (formerly known as Hawk Sense Security Systems Pvt Ltd)
+India  Contact info
+500+ connections
+Open to
+
+Add profile section
+
+Enhance profile
+
+Resources
+Open to work
+Full Stack Engineer roles
+
+Show details
+
+Edit
+Open to volunteer for these causes
+Science and Technology, Environmental Sustainability, Economic Empowerment, Disaster and Humanitarian Relief, Arts and Culture, Clean Water and Sanitation, Civil Rights, Social Action, and Civic Engagement, Diversity, Equity, and Inclusion, Employment / Workforce Development, Food, Agriculture, and Nutrition, Health - General and Rehabilitative, Housing and Shelter, Hunger and Food Security, Human Rights, International, Foreign Affairs, and National Security, Medical Research, Mental Health and Crisis Intervention, Public Safety and Disaster Preparedness, Recreation and Sports, Veteran Support
+
+Show details
+
+Edit
+Suggested for youSuggested for you
+ Private to you Private to you
+
+
+Add Github projects that showcase your skillsAdd Github projects that showcase your skills
+Show recruiters how you put your skills to use by adding projects to your profile.
+Show recruiters how you put your skills to use by adding projects to your profile.
+Add project
+AnalyticsAnalytics
+ Private to you Private to you
+
+96 profile views
+96 profile views
+Discover who's viewed your profile.Discover who's viewed your profile.
+94 post impressions
+94 post impressions
+Check out who's engaging with your posts.Check out who's engaging with your posts.
+Past 7 daysPast 7 days
+8 search appearances
+8 search appearances
+See how often you appear in search results.See how often you appear in search results.
+Show all analytics
+AboutAbout
+I’m a hands-on Full Stack & AI Software Engineer specializing in creating robust, secure, and innovative digital solutions. With hands-on experience building AI-driven clinical platforms and modern web apps, I merge deep technical expertise—including quantum-resistant cryptography, TypeScript, Node.js, and advanced AI/Blockchain integration—with a relentless drive to innovate.
+
+Key Achievements:
+• Developed ClinicalAiAssistant, a predictive diagnostic tool that integrates deep learning and next-gen security measures.
+• Built user-centric interfaces and scalable back-end systems powering projects like PerplexityClone and WordWizardChallenge.
+• Engineered data pipelines and real-time dashboards that enhance decision-making and cybersecurity.
+
+I thrive in fast-paced, challenging environments where I can apply my technical skills to solve real-world problems—without the need for constant small talk. If you’re looking for someone who combines deep industry expertise with a no-nonsense, results-driven approach, let’s connect.I’m a hands-on Full Stack & AI Software Engineer specializing in creating robust, secure, and innovative digital solutions. With hands-on experience building AI-driven clinical platforms and modern web apps, I merge deep technical expertise—including quantum-resistant cryptography, TypeScript, Node.js, and advanced AI/Blockchain integration—with a relentless drive to innovate. Key Achievements: • Developed ClinicalAiAssistant, a predictive diagnostic tool that integrates deep learning and next-gen security measures. • Built user-centric interfaces and scalable back-end systems powering projects like PerplexityClone and WordWizardChallenge. • Engineered data pipelines and real-time dashboards that enhance decision-making and cybersecurity. I thrive in fast-paced, challenging environments where I can apply my technical skills to solve real-world problems—without the need for constant small talk. If you’re looking for someone who combines deep industry expertise with a no-nonsense, results-driven approach, let’s connect.…see more
+ServicesServices
+SaaS Development • Web Development • iOS Development • Information Security • Database Development • Custom Software Development • Cloud Management • Cybersecurity • Data Recovery • Computer NetworkingSaaS Development • Web Development • iOS Development • Information Security • Database Development • Custom Software Development • Cloud Management • Cybersecurity • Data Recovery • Computer Networking
+Show all services
+ActivityActivity
+1,571 followers1,571 followers
+
+Create a post
+
+Posts
+
+Comments
+
+Images
+Loaded 8 Posts posts
+
+
+All things Javascript: JS, TypeScript, NodeJS, React, Angular, Vue, Svelte, DenoAll things Javascript: JS, TypeScript, NodeJS, React, Angular, Vue, Svelte, Deno
+Aditya choudhry • YouAditya choudhry • You
+4d •  4 days ago • Visible to anyone on or off LinkedIn
+
+hashtag#QuestionForGroup
+i am new In my project i am facing issue of implementing micro frontend using angular lib module fedration and iframe dynamic link this project is going live tomorrow and i am not qble to do this task i dont know how to do it
+
+
+
+
+Aditya’s profile photo
+Aditya choudhry reposted this
+
+View Mahenoor Salat’s  graphic link
+Mahenoor SalatMahenoor Salat
+   • 1stVerified • 1st
+Web & App Developer | Full-Stack (Frontend + Backend) | UI/UX & SEO Expert | Video Editor | GSoC Contributor | Hackathon & Devpost Winner | Building Digital Experiences That ConvertWeb & App Developer | Full-Stack (Frontend + Backend) | UI/UX & SEO Expert | Video Editor | GSoC Contributor | Hackathon & Devpost Winner | Building Digital Experiences That Convert
+2mo •  2 months ago • Visible to anyone on or off LinkedIn
+Sometimes your brand is good.
+But good isn’t always enough.
+
+I met Zohaib not long ago.
+A Top 1% Web Developer.
+
+His LinkedIn looked nice.
+But it didn’t show the depth of what he does.
+
+I didnot “fix” anything.
+I simply turned the volume up.
+
+Clear positioning.
+A banner that speaks at a glance.
+A call-to-action that tells you exactly why to connect.
+
+Now, his profile does the talking before he even says a word.
+
+And that’s the thing about branding…
+It’s not about changing you.
+It’s about making sure the right people see you.
+
+Checkout his profile Muhammad Zohaib. 
+
+Your skills might already be great.
+But do they look great to the world?
+
+If you’re ready for your profile to speak for you, 
+
+DM Mahenoor Salat “Revamp”.
+…more
+Great skills, louder brand • 8 pages
+Great skills, louder brand1/8
+likelovesupport
+59
+45 comments
+1 repost
+
+like
+
+
+
+
+Show all posts
+ExperienceExperience
+
+Hawk Sense Business Solutions Pvt Ltd (formerly known as Hawk Sense Security Systems Pvt Ltd) logo
+Full Stack Engineer
+Full Stack Engineer
+Hawk Sense Business Solutions Pvt Ltd (formerly known as Hawk Sense Security Systems Pvt Ltd) · Full-timeHawk Sense Business Solutions Pvt Ltd (formerly known as Hawk Sense Security Systems Pvt Ltd) · Full-time
+Sep 2024 - Present · 1 yr 3 mosSep 2024 to Present · 1 yr 3 mos
+HybridHybrid
+• Developed RESTful APIs using Java Spring Boot for enterprise applications.
+• Built responsive front-end modules using Angular 15.
+• Migrated legacy SOAP services to microservices architecture.
+• Implemented Spring Security with JWT for secure authentication.
+• Optimized database queries in PostgreSQL and MongoDB.
+• Managed CI/CD pipelines using Azure DevOps and Docker.
+• Deployed applications to Kubernetes clusters.
+• Wrote automated test scripts using Selenium and Postman.
+• Participated in Agile sprints, reviews, and planning.
+• Mentored junior developers and conducted code reviews• Developed RESTful APIs using Java Spring Boot for enterprise applications. • Built responsive front-end modules using Angular 15. • Migrated legacy SOAP services to microservices architecture. • Implemented Spring Security with JWT for secure authentication. • Optimized database queries in PostgreSQL and MongoDB. • Managed CI/CD pipelines using Azure DevOps and Docker. • Deployed applications to Kubernetes clusters. • Wrote automated test scripts using Selenium and Postman. • Participated in Agile sprints, reviews, and planning. • Mentored junior developers and conducted code reviews…see more
+Full Stack Engineer
+Full Stack Engineer
+Full Stack Engineer
+Edu Startup · Self-employedEdu Startup · Self-employed
+Nov 2019 - Dec 2024 · 5 yrs 2 mosNov 2019 to Dec 2024 · 5 yrs 2 mos
+Delhi, India · HybridDelhi, India · Hybrid
+• Engineered Spring Boot microservices supporting over 200K concurrent users, achieving 99.9% uptime. 
+• Integrated secure JWT-based authentication for seamless mobile and web platform access. 
+• Automated Docker-based CI/CD pipelines with Jenkins and GitHub Actions, enhancing deployment efficiency. 
+• Mentored junior developers, contributing to code reviews and architectural decisions to foster team growth.• Engineered Spring Boot microservices supporting over 200K concurrent users, achieving 99.9% uptime. • Integrated secure JWT-based authentication for seamless mobile and web platform access. • Automated Docker-based CI/CD pipelines with Jenkins and GitHub Actions, enhancing deployment efficiency. • Mentored junior developers, contributing to code reviews and architectural decisions to foster team growth.…see more
+Web Applications, Software Infrastructure and +41 skills
+EducationEducation
+Maharishi Markandeshwar (Deemed to be University) Official logo
+Maharishi Markandeshwar (Deemed to be University) Official
+Maharishi Markandeshwar (Deemed to be University) Official
+Master of Computer Applications - MCA, Computer ScienceMaster of Computer Applications - MCA, Computer Science
+Sep 2022 - Jul 2024Sep 2022 - Jul 2024
+Grade: 8.5Grade: 8.5
+Activities and societies: Hands-on Workshop on Data Analytics and Visualization
+Hands-on Workshop on Web Technologies
+4-Day Workshop on Dynamic Web Development and DNS Mastery
+Multiple - AI Hackathon by Lablab.aiActivities and societies: Hands-on Workshop on Data Analytics and Visualization Hands-on Workshop on Web Technologies 4-Day Workshop on Dynamic Web Development and DNS Mastery Multiple - AI Hackathon by Lablab.ai…see more
+"Participating in AI-focused hackathons offers a unique opportunity to explore cutting-edge technologies, collaborate with talented peers, and develop innovative solutions to real-world problems. From generative AI challenges to quantum computing competitions, these events provide a platform to apply theoretical knowledge in a hands-on, competitive environment. With themes ranging from education transformation using Azure AI to NASA's space exploration using GPU programming, each hackathon sharpens technical expertise, problem-solving abilities, and teamwork skills. These experiences not only enhance your resume but also position you as a forward-thinking professional in the field of AI and technology.""Participating in AI-focused hackathons offers a unique opportunity to explore cutting-edge technologies, collaborate with talented peers, and develop innovative solutions to real-world problems. From generative AI challenges to quantum computing competitions, these events provide a platform to apply theoretical knowledge in a hands-on, competitive environment. With themes ranging from education transformation using Azure AI to NASA's space exploration using GPU programming, each hackathon sharpens technical expertise, problem-solving abilities, and teamwork skills. These experiences not only enhance your resume but also position you as a forward-thinking professional in the field of AI and technology."…see more
+Computer Science, System Deployment and +18 skills
+DIT UNIVERSITY logo
+DIT UNIVERSITY
+DIT UNIVERSITY
+Bachelor of Technology - BTech, Civil EngineeringBachelor of Technology - BTech, Civil Engineering
+Aug 2015 - Jul 2019Aug 2015 - Jul 2019
+Grade: 5.7Grade: 5.7
+Activities and societies: Civil Engineering
+Bridge Design Competition
+Attend workshops on the latest civil engineering software like AutoCAD, Revit, and STAAD.Pro.
+Participate in seminars on topics like sustainable construction, smart cities, or geotechnical advancements.Activities and societies: Civil Engineering Bridge Design Competition Attend workshops on the latest civil engineering software like AutoCAD, Revit, and STAAD.Pro. Participate in seminars on topics like sustainable construction, smart cities, or geotechnical advancements.…see more
+"Actively participate in civil engineering expos, technology fairs, and international conferences to stay informed about the latest industry trends, innovations, and advancements. These events provide invaluable opportunities to network with industry leaders, explore emerging technologies, and gain insights into sustainable practices and cutting-edge infrastructure solutions. Committed to continuous learning and professional growth to contribute to the evolving field of civil engineering.""Actively participate in civil engineering expos, technology fairs, and international conferences to stay informed about the latest industry trends, innovations, and advancements. These events provide invaluable opportunities to network with industry leaders, explore emerging technologies, and gain insights into sustainable practices and cutting-edge infrastructure solutions. Committed to continuous learning and professional growth to contribute to the evolving field of civil engineering."…see more
+HTML5, System Architecture and +4 skills
+Licenses & certificationsLicenses & certifications
+HackerRank logo
+Software Engineer Certificate
+Software Engineer Certificate
+HackerRankHackerRank
+Issued Jun 2025Issued Jun 2025
+Show credential
+freeCodeCamp logo
+Responsive Web Design
+Responsive Web Design
+freeCodeCampfreeCodeCamp
+Issued Jan 2024 · Expires Feb 2027
