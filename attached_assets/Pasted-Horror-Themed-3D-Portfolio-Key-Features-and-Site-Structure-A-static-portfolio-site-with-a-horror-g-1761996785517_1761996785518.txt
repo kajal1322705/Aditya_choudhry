@@ -1,0 +1,158 @@
+Horror-Themed 3D Portfolio: Key Features and Site Structure
+
+A static portfolio site with a horror/game theme can be highly engaging by blending interactive 3D scenes, puzzle elements, and ambient effects. For example, Xianyao Wei’s Weisdevice portfolio used Three.js, GSAP and Howler.js to create a glitchy 3D world with sound
+tympanus.net
+tympanus.net
+. In our case, we can adopt similar tools and design ideas. Key features might include:
+
+3D Interactive Environment: Build a Three.js scene (e.g. a haunted code-lab or graveyard of projects) that visitors can navigate. For instance, Dheer Jain’s “Neural Workspace” uses an in-app 3D terminal interface inside a futuristic world to let users explore projects
+discourse.threejs.org
+. We could create a static 3D “terminal” or computer screen object (e.g. a vintage CRT model) in the scene that responds to clicks/commands, acting as the game UI.
+
+Puzzle-Driven Portfolio Showcase: Embed the portfolio content (projects, resume info) as puzzles or hidden clues. For example, the site copy hints at Easter eggs in branches and commit history. We could hide key info behind simple coding puzzles or “glitched” text that users have to decipher. Clicking on certain 3D objects (tombstones, monitors, old code files) might “unlock” project pages or about-info. This gamified approach turns the portfolio into an interactive mystery.
+
+Glitch & Horror Effects: Use CSS/GLSL effects to give a horror feel. For instance, apply a chromatic-aberration shader or CSS “wobble” filter on text and images
+tympanus.net
+. The codrops case study applied a “wobble” SVG filter to modals and toggles to achieve a coherent glitchy interface
+tympanus.net
+. In Three.js we might use post-processing (glitch shader, scanlines) on the 3D view when the player looks at a terminal or when a spooky event happens. Flickering lights, grain, and glitch textures can reinforce the eerie vibe.
+
+Ambient Audio and Sound Effects: Add looping background audio (e.g. distant thunder, creaking floors, subtle static) to set the mood, and trigger sound effects on events (typing, wrong command, ghostly noises). Using Howler.js is ideal for static sites – it works entirely client-side. In Wei’s portfolio, Howler was used to play UI and device sounds, creating a “slightly chaotic soundscape”
+tympanus.net
+. Similarly, we can preload a haunting ambient loop and play short SFX for interactions (e.g. a glitch zap when the scene shifts, or a ghost whisper when a clue appears).
+
+Responsive Design / Fallbacks: Ensure the site works on all screens. As one case study notes, a key goal is “a performant 3D world that works on most devices” with minimal assets and responsive CSS
+tympanus.net
+. Design a mobile-friendly interface (e.g. simplified controls or 2D fallback) since mobile traffic dominates the web
+seattlenewmedia.com
+. Use media queries or even disable heavy 3D on small screens if needed. For example, the Astro/Three.js portfolio mentioned only enabled 3D on desktop for performance. At minimum, ensure text and UI scale well on phones and tablets.
+
+Pages and Sections
+
+Even as a static site, we can structure content into multiple pages or sections, each with thematic content. Suggested pages include:
+
+Home / 404 Landing: Start with a custom “404” landing that greets visitors with the horror vibe. This could be a full-canvas Three.js scene (a dark room with a flickering terminal screen) and a message like “👻 404: The Missing Coder”. The user might press a key or click to “boot” the game.
+
+Game/Terminal Interface: A main interactive page where the player navigates the haunted repo. This could be a canvas with the 3D scene (the broken codebase). Here puzzles are solved and project items are discovered. The “terminal” object in the scene could open an overlay or teleport the user between sections.
+
+Portfolio / Projects: A page or set of pages showcasing work, but presented as part of the puzzle. For example, each project could be a “level” accessed by solving a riddle or clicking the right in-scene object. The project details could appear as stylized text on an old monitor, or as hidden markdown files that the player finds. Each project page should maintain the horror theme (e.g. glitchy text, redacted file style).
+
+About/Resume: “About me” info could be hidden as an in-game codex or commit message log. This might be a secret page unlocked after completing certain tasks. Alternatively, present it as an NPC or ghost rambling about their background when clicked. The key is to keep it narrative.
+
+Contact / Contribute: A static Contact page or form (if desired) themed as a “help wanted” post or bug report form. Or a “Contribute” page explaining how to fork the repo, also in creepy language (e.g. “every commit feeds the ghost”). This can simply be a static HTML with links (no backend needed for form processing if using mailto or GitHub Issues link).
+
+Each page can be built with plain HTML/CSS/JS and should degrade gracefully if WebGL fails (e.g. show a static fallback image or message). Navigation between pages can be done with traditional links, but you can style them as in-world portals (using GSAP for smooth transitions).
+
+Visual & Animation Effects
+
+Animations with GSAP: Use GSAP (GreenSock) to animate UI overlays, scene fades, camera moves, etc. For example, on page load or when entering the 3D world, animate the camera to focus on an object. GSAP was used to implement all key animations in the referenced portfolio
+tympanus.net
+: intro animations, object highlights, hover/click effects. Likewise, GSAP can smoothly tween scene elements or DOM menus in our site.
+
+Shader and Lighting Design: Bake lighting into textures for a retro look, or use simple Three.js lights for dynamic flickers. The codrops example baked lights and manually painted smoky red for night mode
+tympanus.net
+. You might bake light maps in Blender so that runtime is cheap. For a truly 3D effect, consider a subtle bloom or glow on light sources, and flickering lamps (simulating an “old code lab”).
+
+Glitch/Cinematic Transitions: Trigger full-screen “glitch” transitions between sections or when an error occurs. This can be done with CSS filters or a small WebGL post-processing chain. For instance, switching from the terminal to a project page might flash red static, or the screen might momentarily distort (like old CRT). Simple CSS animations (blink, blur) on the canvas element can also work.
+
+ASCII and Pixel Art: Use retro ASCII art or low-res pixel textures on textures/planes to reinforce the retro horror theme (like old DOS hacker screens). This is a stylistic choice and can be implemented with fonts or textures.
+
+Audio Design
+
+Ambient and interactive audio greatly enhance immersion. Steps to integrate audio:
+
+Background Loop: Choose or create a subtle ambient track (e.g. wind, distant static, eerie drones). Use Howler.js to play it on a loop from the start. Provide a mute toggle (perhaps styled as a broken switch in the UI).
+
+Interactive Sounds: Add short sound effects for events – typing clicks for terminal input, glitch zaps when puzzles fail/succeed, a creepy whisper when an easter egg is found. Load these with Howler and trigger them in response to user actions or timeline events (e.g. camera change).
+
+Volume Control: Allow user to adjust or mute sound (store setting in localStorage). In Weisdevice, sound toggles are part of the UI
+tympanus.net
+.
+
+Sync with Animations: Optionally, sync certain animations or shader effects to audio cues (audio-reactive elements). This is advanced but can be done by analyzing audio amplitude with Web Audio API if desired.
+
+All audio runs client-side, so no backend. The Howler.js library works simply by including its script and loading sound files in JavaScript.
+
+Technical Stack & Deployment
+
+Because this is entirely static and runs in-browser, we can use any frontend tools as long as the output is static assets. A suggested stack:
+
+Three.js: Core for 3D scenes. Load it via a <script> tag (CDN) or npm if using a bundler.
+
+GSAP: For smooth JavaScript animations (can be included via CDN too).
+
+Howler.js: For audio (include via CDN or static file).
+
+HTML/CSS/Vanilla JS: All content, UI and logic. Modern bundlers (Vite, Astro, etc.) are optional but not required; plain files are fine.
+
+Models/Textures: Create or use free 3D models (e.g. haunted terminal, gravestones) and bake textures in Blender to minimize runtime cost. Optimize assets for small file sizes as in the example
+tympanus.net
+.
+
+CSS Framework (optional): For layout and responsiveness, consider a small utility framework (Tailwind, or just flexbox/grid + media queries).
+
+Deployment: Host on GitHub Pages. For example, you can push your static files to a gh-pages branch or enable GitHub Pages from the main/docs folder. As one solution notes, the gh-pages npm package makes deploying a Three.js site easy: add a deploy script to package.json and run npm run deploy to publish
+stackoverflow.com
+. Otherwise, simply enable Pages in your repository settings (no backend needed). All assets (JS, models, audio) will be served as static files.
+
+Implementation Steps
+
+Plan the Experience: Sketch the world layout (room, lab, code editor). Decide where each piece of content lives (which object opens which info).
+
+Set Up the Repo: Create a new GitHub repo and initialize it. If using npm (for GSAP, Howler, etc.), set up package.json and install needed packages.
+
+Basic Page Structure: Write index.html with a <canvas> for Three.js and basic HTML overlays (e.g. title, menu container). Include Three.js, GSAP and Howler via <script> tags.
+
+Initialize Three.js Scene: In a JS file, set up the scene, camera, and renderer. Add simple geometry (floor, skybox). Import or create 3D models (e.g. a CRT monitor, tombstone, computer) and add them to the scene.
+
+Design UI Elements: Overlay HTML/CSS for things like the terminal text box, HUD or controls if needed. Style them with a pixel or monospace font and apply glitch filters via CSS.
+
+Interactivity: Use raycaster in Three.js to detect clicks on objects. On click, trigger actions: e.g. if the terminal is clicked, show a text input overlay; if a project icon is clicked, open that project page. Handle keyboard input if simulating a terminal.
+
+Animations: Use GSAP to animate camera moves (e.g. zoom into the terminal when starting), UI panels sliding in, or objects pulsing. The codrops example used GSAP for all animations
+tympanus.net
+, including intro and hover effects.
+
+Audio: Use Howler.js to load and play audio. For example:
+
+const bgSound = new Howl({ src: ['ambient.mp3'], loop: true, volume: 0.5 });
+bgSound.play();
+
+
+And for clicks:
+
+const clickSound = new Howl({ src: ['click.wav'] });
+function onObjectClick(obj) { clickSound.play(); /* ... */ }
+
+
+Glitch Effects: Apply CSS filters to elements (e.g. a “wobble” SVG filter from CodePen
+tympanus.net
+) or use Three.js post-processing shaders for screen effects. Trigger these effects on specific events (e.g. flash the screen red when a puzzle fails).
+
+Responsive Design: Add CSS media queries to adapt the layout. For small screens, consider hiding some 3D detail or showing a simpler 2D interface. Test on phones to ensure UI elements remain legible. As noted, making the 3D world work on all devices is crucial
+tympanus.net
+.
+
+Content Pages: Create separate HTML pages for each project/about, or dynamically inject content. Keep the same style (glitch fonts, horror imagery). Link or route to these from the main scene interactions.
+
+Testing & Optimization: Ensure the Three.js animations run smoothly (pause rendering if static screens are shown, as in Wei’s code
+tympanus.net
+). Compress textures/models. Lazy-load resources (e.g. load 3D only when needed).
+
+Deploy to GitHub Pages: Push code to GitHub. If using npm, run npm run build and npm run deploy with gh-pages (as recommended)
+stackoverflow.com
+. Otherwise, enable Pages on the repo’s settings (point it to main branch or docs folder). Your site is now live at https://username.github.io/repo/.
+
+Bonus: Add fun extras like hidden achievements, alternate endings (e.g. solving the repo mystery one way vs. another), and stylized error messages. For example, a special 404 page that reacts to query parameters or a secret “game over” screen that loops a creepy cutscene. These spark user curiosity and make the portfolio memorable.
+
+By combining a responsive 3D scene (Three.js), animated interactions (GSAP), and atmospheric sound (Howler.js), you’ll create an immersive “Missing Coder” experience entirely with static web tech
+tympanus.net
+tympanus.net
+.
+
+Sources: Inspiration and techniques from creative coding case studies and portfolio showcases (e.g. Weisdevice and Neural Workspace)
+tympanus.net
+discourse.threejs.org
+, and deployment tips from GitHub Pages guides
+stackoverflow.com
+.
