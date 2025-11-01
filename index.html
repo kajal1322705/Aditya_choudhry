@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Choudhry - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">AC</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Hi, I'm <span class="gradient-text">Aditya Choudhry</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span id="typed-text"></span>
+                <span class="cursor">|</span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <p>Scroll Down</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">Student at MMU University Mullana looking forward to gain achievements</p>
+                    <p>I'm a passionate developer with expertise in building innovative solutions across various domains including web development, security, cryptocurrency, and artificial intelligence. My projects showcase a diverse skill set ranging from medical dashboards to chess platforms and security scanners.</p>
+                    <p>I contribute to open-source projects and continuously explore new technologies to expand my knowledge and create impactful applications.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/kajal1322705" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">APIs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Blender</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Web Security</span>
+                        <span class="skill-tag">Cryptocurrency</span>
+                        <span class="skill-tag">AI/ML</span>
+                        <span class="skill-tag">Medical Tech</span>
+                        <span class="skill-tag">Game Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="typescript">TypeScript</button>
+                <button class="filter-btn" data-filter="html">HTML</button>
+                <button class="filter-btn" data-filter="javascript">JavaScript</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="html">
+                    <div class="project-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>CodeCompanion</h3>
+                    <p>An intelligent code companion tool to assist developers with coding tasks and problem-solving.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/CodeCompanion" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>MedicalDashboard</h3>
+                    <p>A comprehensive medical dashboard for healthcare professionals to manage patient data and analytics.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Dashboard</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/MedicalDashboard" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>WebSecurityScanner</h3>
+                    <p>Advanced web security scanner to detect vulnerabilities and ensure application safety.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Security</span>
+                        <span class="tech-badge">Scanning</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/WebSecurityScanner" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-bitcoin"></i>
+                    </div>
+                    <h3>CryptoIntelligence</h3>
+                    <p>Cryptocurrency intelligence platform for tracking market trends and analyzing blockchain data.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Crypto</span>
+                        <span class="tech-badge">Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/CryptoIntelligence" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <h3>ChessRealm</h3>
+                    <p>Interactive online chess platform with real-time gameplay and advanced features.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">WebSockets</span>
+                        <span class="tech-badge">Game Dev</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/ChessRealm" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>We-r-awesome</h3>
+                    <p>Collaborative platform built with modern web technologies.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Collaboration</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/We-r-awesome" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>ApiHubConnect</h3>
+                    <p>Centralized API hub for connecting and managing multiple API integrations.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">API</span>
+                        <span class="tech-badge">Integration</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/ApiHubConnect" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Demo Project</h3>
+                    <p>Demonstration project showcasing various TypeScript features and best practices.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Demo</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/demo" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="javascript">
+                    <div class="project-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Quirk</h3>
+                    <p>Quantum circuit simulator - A drag-and-drop tool for exploring quantum circuits in the browser.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Quantum</span>
+                        <span class="tech-badge">Simulation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/Quirk" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Material Web</h3>
+                    <p>Material Design Web Components for building modern, accessible web applications.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Material UI</span>
+                        <span class="tech-badge">Components</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/material-web" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="typescript">
+                    <div class="project-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>VS Code</h3>
+                    <p>Contribution to Visual Studio Code - the popular code editor used by millions of developers.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Electron</span>
+                        <span class="tech-badge">IDE</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/vscode" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="java">
+                    <div class="project-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>PrimeFaces Component Suite</h3>
+                    <p>Ultimate Component Suite for Jakarta Faces - rich UI components for enterprise applications.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">JSF</span>
+                        <span class="tech-badge">UI Components</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kajal1322705/kajal1322705" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p class="contact-description">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <div class="contact-methods">
+                        <a href="https://github.com/kajal1322705" target="_blank" class="contact-method">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p>@kajal1322705</p>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" class="contact-method">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <p>Aditya Choudhry</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Aditya Choudhry. All rights reserved.</p>
+            <p>Built with HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
