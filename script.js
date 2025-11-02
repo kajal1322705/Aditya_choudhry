@@ -87,18 +87,36 @@ function initParticleAnimation() {
         draw() {
             const isLightMode = document.body.classList.contains('light-mode');
             const baseColor = isLightMode ? '79, 70, 229' : '99, 102, 241';
-            const opacity = 0.3 + Math.sin(this.pulse) * 0.2;
+            const secondaryColor = isLightMode ? '124, 58, 237' : '139, 92, 246';
+            const pulseOpacity = 0.4 + Math.sin(this.pulse) * 0.3;
+            
+            // Outer glow rings
+            for (let i = 3; i > 0; i--) {
+                const glowRadius = this.radius + i * 2;
+                const glowOpacity = pulseOpacity * 0.2 * (i / 3);
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, glowRadius, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(${secondaryColor}, ${glowOpacity})`;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // Main node with gradient
+            const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+            gradient.addColorStop(0, `rgba(${baseColor}, ${pulseOpacity})`);
+            gradient.addColorStop(0.7, `rgba(${secondaryColor}, ${pulseOpacity * 0.8})`);
+            gradient.addColorStop(1, `rgba(${baseColor}, ${pulseOpacity * 0.5})`);
             
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${baseColor}, ${opacity})`;
+            ctx.fillStyle = gradient;
             ctx.fill();
             
+            // Inner highlight
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius + 3, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(${baseColor}, ${opacity * 0.3})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
+            ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.4, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${pulseOpacity * 0.3})`;
+            ctx.fill();
         }
     }
 
@@ -119,6 +137,7 @@ function initParticleAnimation() {
     function drawPipelines() {
         const isLightMode = document.body.classList.contains('light-mode');
         const baseColor = isLightMode ? '79, 70, 229' : '99, 102, 241';
+        const secondaryColor = isLightMode ? '124, 58, 237' : '139, 92, 246';
         
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
@@ -127,19 +146,33 @@ function initParticleAnimation() {
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
                 if (distance < 150) {
-                    const opacity = 0.15 * (1 - distance / 150);
+                    const opacity = 0.2 * (1 - distance / 150);
+                    const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                    gradient.addColorStop(0, `rgba(${baseColor}, ${opacity})`);
+                    gradient.addColorStop(0.5, `rgba(${secondaryColor}, ${opacity * 1.2})`);
+                    gradient.addColorStop(1, `rgba(${baseColor}, ${opacity})`);
+                    
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(nodes[j].x, nodes[j].y);
-                    ctx.strokeStyle = `rgba(${baseColor}, ${opacity})`;
-                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = gradient;
+                    ctx.lineWidth = 1.5;
                     ctx.stroke();
                     
+                    // Enhanced midpoint with glow effect
                     const midX = (nodes[i].x + nodes[j].x) / 2;
                     const midY = (nodes[i].y + nodes[j].y) / 2;
+                    const pulse = (Math.sin(Date.now() * 0.003) + 1) * 0.5;
+                    
                     ctx.beginPath();
-                    ctx.arc(midX, midY, 2, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${baseColor}, ${opacity * 2})`;
+                    ctx.arc(midX, midY, 3 + pulse * 2, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${secondaryColor}, ${opacity * 2.5 * (0.5 + pulse)})`;
+                    ctx.fill();
+                    
+                    // Outer glow
+                    ctx.beginPath();
+                    ctx.arc(midX, midY, 5 + pulse * 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${secondaryColor}, ${opacity * 0.5 * pulse})`;
                     ctx.fill();
                 }
             }
@@ -150,7 +183,12 @@ function initParticleAnimation() {
      * The main animation loop. Clears the canvas and redraws all elements.
      */
     function animateTechBackground() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Create a trailing effect instead of clearing completely
+        const isLightMode = document.body.classList.contains('light-mode');
+        const fadeColor = isLightMode ? '241, 245, 249' : '2, 6, 23';
+        ctx.fillStyle = `rgba(${fadeColor}, 0.08)`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
         drawPipelines();
         
         for (let node of nodes) {
@@ -504,11 +542,17 @@ function initCommandPalette() {
         }
     });
 
-    // Filter commands as the user types
+    // Filter commands as the user types with smooth animation
     input.addEventListener('input', () => {
         const query = input.value.toLowerCase();
         const filteredCommands = commands.filter(command => command.name.toLowerCase().includes(query));
-        renderResults(filteredCommands);
+        
+        // Add fade effect
+        resultsContainer.style.opacity = '0';
+        setTimeout(() => {
+            renderResults(filteredCommands);
+            resultsContainer.style.opacity = '1';
+        }, 150);
     });
 
     // Execute the selected command on 'Enter' key press
@@ -549,16 +593,36 @@ function initScrollAnimations() {
     // Observe project cards with a separate observer for their specific animation
     const projectCards = document.querySelectorAll('.project-card');
     const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('show');
+                const card = entry.target;
+                // Stagger animation for visual appeal
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 100);
+                projectObserver.unobserve(card); // Animate only once
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
     projectCards.forEach(card => {
         projectObserver.observe(card);
     });
+    
+    // Add subtle parallax effect to project cards on scroll
+    window.addEventListener('scroll', debounce(() => {
+        const currentScrollY = window.scrollY;
+        
+        projectCards.forEach((card, index) => {
+            const rect = card.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible && card.classList.contains('show')) {
+                const offset = Math.sin((currentScrollY * 0.005) + (index * 0.5)) * 3;
+                card.style.transform = `translateY(${offset}px) scale(1)`;
+            }
+        });
+    }, 16), { passive: true });
 }
 
 /**
@@ -626,15 +690,6 @@ function initSmoothScrolling() {
  * Initializes animations that trigger on page load.
  */
 function initLoadAnimations() {
-    // Animate project cards appearing on load
-    window.addEventListener('load', () => {
-        document.querySelectorAll('.project-card').forEach((project, index) => {
-            setTimeout(() => {
-                project.classList.add('show');
-            }, index * 100); // Stagger the animation
-        });
-    });
-
     // Fade in sections as the DOM loads
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('section').forEach((section, index) => {
