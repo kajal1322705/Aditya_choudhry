@@ -780,9 +780,7 @@ body.light-mode .theme-toggle .fa-moon {
     background: rgba(99, 102, 241, 0.1);
     color: var(--gray-text);
     position: absolute;
-    will-change: transform;
-    animation: floatWithGlow 6s ease-in-out infinite;
-    animation-delay: var(--delay);
+    will-change: transform, left, top;
     padding: 0.5rem 1rem;
     border-radius: 25px;
     font-size: 0.875rem;
@@ -790,25 +788,40 @@ body.light-mode .theme-toggle .fa-moon {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     backdrop-filter: blur(10px);
+    animation: bounceAround 8s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
 }
 
 .skill-tag:hover {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    transform: scale(1.15) translateY(-5px);
+    transform: scale(1.15);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
     border-color: transparent;
     animation-play-state: paused;
+    z-index: 10;
 }
 
-@keyframes floatWithGlow {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
+@keyframes bounceAround {
+    0% {
+        transform: translate(0, 0) scale(1);
         box-shadow: 0 2px 10px rgba(99, 102, 241, 0.1);
     }
+    25% {
+        transform: translate(var(--move-x, 30px), var(--move-y, -25px)) scale(1.05);
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.2);
+    }
     50% {
-        transform: translateY(-20px) scale(1.05);
-        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+        transform: translate(var(--move-x-end, 15px), var(--move-y-end, 20px)) scale(1.08);
+        box-shadow: 0 8px 22px rgba(99, 102, 241, 0.25);
+    }
+    75% {
+        transform: translate(var(--move-x-back, -20px), var(--move-y-back, -15px)) scale(1.03);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.18);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        box-shadow: 0 2px 10px rgba(99, 102, 241, 0.1);
     }
 }
 
