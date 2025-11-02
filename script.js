@@ -213,8 +213,11 @@ function initNavbar() {
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            // Only close the menu if the hamburger is visible (i.e., on mobile)
+            if (hamburger.offsetParent !== null) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         });
     });
 
