@@ -32,6 +32,7 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="blog.html" class="nav-link">Articles</a></li>
             </ul>
         </div>
     </nav>
@@ -582,6 +583,16 @@
     </main>
 
     <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+
+    <div class="command-palette-overlay" id="commandPaletteOverlay">
+        <div class="command-palette" id="commandPalette">
+            <div class="command-palette-header">
+                <i class="fas fa-search"></i>
+                <input type="text" id="commandInput" placeholder="Type a command or search...">
+            </div>
+            <ul class="command-palette-results" id="commandResults"></ul>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

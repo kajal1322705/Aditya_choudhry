@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Aditya Choudhry</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">AC</a>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="blog.html" class="nav-link active">Articles</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="post-container">
+            <header class="post-header">
+                <h1>Building a Command Palette with Vanilla JS</h1>
+                <p class="post-meta">Published on November 10, 2025 by Aditya Choudhry</p>
+            </header>
+            <div class="post-content">
+                <p>In modern web development, user experience is paramount. One feature that has become increasingly popular, especially in developer-focused tools and websites, is the command palette. It provides a fast, keyboard-driven way for users to access commands and navigate a site. In this article, we'll walk through how to build one from scratch using only vanilla JavaScript, HTML, and CSS.</p>
+                
+                <h2>Step 1: The HTML Structure</h2>
+                <p>First, we need a basic structure for our palette. This will typically be an overlay that covers the page, with a container for the input and the results list. We'll add this right before the closing `</body>` tag.</p>
+                
+                <pre><code>&lt;div class="command-palette-overlay" id="commandPaletteOverlay"&gt;
+    &lt;!-- Content here --&gt;
+&lt;/div&gt;</code></pre>
+
+                <h2>Step 2: Styling with CSS</h2>
+                <p>The palette should be visually distinct and easy to use. We'll use a fixed position to keep it on top of other content and a flexbox layout to center it. The background will be semi-transparent to give it a modal feel.</p>
+
+                <p>... (continue with the rest of the article content)</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <!-- Footer content from index.html -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

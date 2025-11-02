@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScrolling();
     initBackToTopButton();
     initLoadAnimations();
+    initCommandPalette();
 });
 
 function debounce(func, wait) {
@@ -241,6 +242,88 @@ function initBackToTopButton() {
             backToTopButton.classList.add('visible');
         } else {
             backToTopButton.classList.remove('visible');
+        }
+    });
+}
+
+function initCommandPalette() {
+    const overlay = document.getElementById('commandPaletteOverlay');
+    const input = document.getElementById('commandInput');
+    const resultsContainer = document.getElementById('commandResults');
+
+    const commands = [
+        { name: 'Home: Go to top', action: () => document.querySelector('a[href="#home"]').click() },
+        { name: 'About: Go to section', action: () => document.querySelector('a[href="#about"]').click() },
+        { name: 'Experience: Go to section', action: () => document.querySelector('a[href="#experience"]').click() },
+        { name: 'Projects: Go to section', action: () => document.querySelector('a[href="#projects"]').click() },
+        { name: 'Skills: Go to section', action: () => document.querySelector('a[href="#skills"]').click() },
+        { name: 'Education: Go to section', action: () => document.querySelector('a[href="#education"]').click() },
+        { name: 'Contact: Go to section', action: () => document.querySelector('a[href="#contact"]').click() },
+        { name: 'Theme: Toggle Light/Dark Mode', action: () => document.getElementById('themeToggle').click() },
+        { name: 'GitHub: Open profile', action: () => window.open('https://github.com/kajal1322705', '_blank') },
+        { name: 'LinkedIn: Open profile', action: () => window.open('https://www.linkedin.com/in/aditya-choudhry/', '_blank') },
+        { name: 'Blog: View Articles', action: () => window.location.href = 'blog.html' },
+    ];
+
+    function renderResults(filteredCommands) {
+        resultsContainer.innerHTML = '';
+        filteredCommands.forEach((command, index) => {
+            const li = document.createElement('li');
+            li.textContent = command.name;
+            if (index === 0) {
+                li.classList.add('selected');
+            }
+            li.addEventListener('click', () => {
+                command.action();
+                closePalette();
+            });
+            resultsContainer.appendChild(li);
+        });
+    }
+
+    function openPalette() {
+        overlay.classList.add('visible');
+        input.focus();
+        renderResults(commands);
+    }
+
+    function closePalette() {
+        overlay.classList.remove('visible');
+        input.value = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (overlay.classList.contains('visible')) {
+                closePalette();
+            } else {
+                openPalette();
+            }
+        }
+        if (e.key === 'Escape' && overlay.classList.contains('visible')) {
+            closePalette();
+        }
+    });
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closePalette();
+        }
+    });
+
+    input.addEventListener('input', () => {
+        const query = input.value.toLowerCase();
+        const filteredCommands = commands.filter(command => command.name.toLowerCase().includes(query));
+        renderResults(filteredCommands);
+    });
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const selected = resultsContainer.querySelector('.selected');
+            if (selected) {
+                selected.click();
+            }
         }
     });
 }
