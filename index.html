@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="loading">
+    <div class="preloader">
+        <div class="preloader-logo">AC</div>
+        <div class="preloader-spinner"></div>
+    </div>
+
     <canvas id="particleCanvas"></canvas>
     
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">AC</a>
+            <a href="#home" class="nav-logo">AC</a>
             <div class="nav-right">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-sun"></i>
@@ -38,6 +43,18 @@
     </nav>
 
 <main>
+
+    <div class="stepper-nav">
+        <ul>
+            <li><a href="#home" data-section="home" class="stepper-dot active" aria-label="Go to Home"><span>Home</span></a></li>
+            <li><a href="#about" data-section="about" class="stepper-dot" aria-label="Go to About"><span>About</span></a></li>
+            <li><a href="#experience" data-section="experience" class="stepper-dot" aria-label="Go to Experience"><span>Experience</span></a></li>
+            <li><a href="#projects" data-section="projects" class="stepper-dot" aria-label="Go to Projects"><span>Projects</span></a></li>
+            <li><a href="#skills" data-section="skills" class="stepper-dot" aria-label="Go to Skills"><span>Skills</span></a></li>
+            <li><a href="#education" data-section="education" class="stepper-dot" aria-label="Go to Education"><span>Education</span></a></li>
+            <li><a href="#contact" data-section="contact" class="stepper-dot" aria-label="Go to Contact"><span>Contact</span></a></li>
+        </ul>
+    </div>
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -77,6 +94,8 @@
                         <li><i class="fas fa-check-circle"></i> Engineered Spring Boot microservices supporting over <strong>200K concurrent users</strong>, achieving 99.9% uptime</li>
                     </ul>
                     
+                    <a href="blog.html" class="btn btn-secondary" style="margin-top: 1.5rem;">Read My Articles</a>
+
                     <p class="closing-statement">I thrive in fast-paced, challenging environments where I can apply my technical skills to solve real-world problems. If you're looking for someone who combines deep industry expertise with a results-driven approach, let's connect.</p>
                     
                     <div class="social-links">

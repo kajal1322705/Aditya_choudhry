@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     initParticleAnimation();
+    initPreloader();
     initThemeToggle();
     initTypingEffect();
     initNavbar();
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLoadAnimations();
     initCommandPalette();
 });
+
 
 function debounce(func, wait) {
     let timeout;
@@ -130,6 +132,15 @@ function initParticleAnimation() {
     animateTechBackground();
 }
 
+function initPreloader() {
+    const preloader = document.querySelector('.preloader');
+    window.addEventListener('load', () => {
+        preloader.classList.add('hidden');
+        document.body.classList.remove('loading');
+    });
+}
+
+
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('theme');
@@ -192,6 +203,7 @@ function initNavbar() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const stepperDots = document.querySelectorAll('.stepper-dot');
     const navbar = document.querySelector('.navbar');
 
     hamburger.addEventListener('click', () => {
@@ -228,6 +240,13 @@ function initNavbar() {
             // Check if the link's href matches the current section's id
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
+            }
+        });
+
+        stepperDots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('data-section') === current) {
+                dot.classList.add('active');
             }
         });
     });
