@@ -208,6 +208,9 @@ function initParticleAnimation() {
         initTechBackground();
     }, 250);
 
+    // Add resize event listener
+    window.addEventListener('resize', debouncedResize);
+
     initTechBackground();
     animateTechBackground();
 }
@@ -218,6 +221,8 @@ function initParticleAnimation() {
  */
 function initPreloader() {
     const preloader = document.querySelector('.preloader');
+    if (!preloader) return;
+
     window.addEventListener('load', () => {
         preloader.classList.add('hidden');
         document.body.classList.remove('loading');
@@ -232,6 +237,8 @@ function initPreloader() {
  */
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
     const savedTheme = localStorage.getItem('theme');
 
     // Apply saved theme on page load
@@ -313,6 +320,8 @@ function initNavbar() {
     const stepperDots = document.querySelectorAll('.stepper-dot');
     const navbar = document.querySelector('.navbar');
 
+    if (!hamburger || !navMenu || !navbar) return;
+
     // Toggle mobile menu on hamburger click
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
@@ -330,43 +339,52 @@ function initNavbar() {
         });
     });
 
-    // Handle scroll-based events for the navbar
+    // Handle scroll-based events for the navbar with throttling
+    let ticking = false;
+    
     window.addEventListener('scroll', () => {
-        // Add 'scrolled' class to navbar for styling
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                // Add 'scrolled' class to navbar for styling
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                // Determine the current section in view
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - navbar.offsetHeight - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                // Update active state for navbar links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    // Check if the link's href matches the current section's id
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Update active state for side stepper dots
+                stepperDots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('data-section') === current) {
+                        dot.classList.add('active');
+                    }
+                });
+                
+                ticking = false;
+            });
+            ticking = true;
         }
-
-        // Determine the current section in view
-        let current = '';
-        const sections = document.querySelectorAll('section');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - navbar.offsetHeight - 100) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        // Update active state for navbar links
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            // Check if the link's href matches the current section's id
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-
-        // Update active state for side stepper dots
-        stepperDots.forEach(dot => {
-            dot.classList.remove('active');
-            if (dot.getAttribute('data-section') === current) {
-                dot.classList.add('active');
-            }
-        });
-    });
+    }, { passive: true });
 }
 
 /**
@@ -451,13 +469,22 @@ function initBackToTopButton() {
     const backToTopButton = document.querySelector('.back-to-top');
     if (!backToTopButton) return;
 
+    // Throttle scroll event for better performance
+    let ticking = false;
+    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
-    });
+    }, { passive: true });
 }
 
 /**
@@ -468,40 +495,25 @@ function initCommandPalette() {
     const overlay = document.getElementById('commandPaletteOverlay');
     const input = document.getElementById('commandInput');
     const resultsContainer = document.getElementById('commandResults');
+    
+    if (!overlay || !input || !resultsContainer) return;
 
     // Define all available commands
     const commands = [
-        { name: 'Home: Go to top', action: () => document.querySelector('a[href="#home"]').click() },
-        { name: 'About: Go to section', action: () => document.querySelector('a[href="#about"]').click() },
-        { name: 'Experience: Go to section', action: () => document.querySelector('a[href="#experience"]').click() },
-        { name: 'Projects: Go to section', action: () => document.querySelector('a[href="#projects"]').click() },
-        { name: 'Skills: Go to section', action: () => document.querySelector('a[href="#skills"]').click() },
-        { name: 'Education: Go to section', action: () => document.querySelector('a[href="#education"]').click() },
-        { name: 'Contact: Go to section', action: () => document.querySelector('a[href="#contact"]').click() },
-        { name: 'Theme: Toggle Light/Dark Mode', action: () => document.getElementById('themeToggle').click() },
+        { name: 'Home: Go to top', action: () => document.querySelector('a[href="#home"]')?.click() },
+        { name: 'About: Go to section', action: () => document.querySelector('a[href="#about"]')?.click() },
+        { name: 'Experience: Go to section', action: () => document.querySelector('a[href="#experience"]')?.click() },
+        { name: 'Projects: Go to section', action: () => document.querySelector('a[href="#projects"]')?.click() },
+        { name: 'Skills: Go to section', action: () => document.querySelector('a[href="#skills"]')?.click() },
+        { name: 'Education: Go to section', action: () => document.querySelector('a[href="#education"]')?.click() },
+        { name: 'Contact: Go to section', action: () => document.querySelector('a[href="#contact"]')?.click() },
+        { name: 'Theme: Toggle Light/Dark Mode', action: () => document.getElementById('themeToggle')?.click() },
         { name: 'GitHub: Open profile', action: () => window.open('https://github.com/kajal1322705', '_blank') },
         { name: 'LinkedIn: Open profile', action: () => window.open('https://www.linkedin.com/in/aditya-choudhry/', '_blank') },
         { name: 'Blog: View Articles', action: () => window.location.href = 'blog.html' },
+        { name: 'Back to Top: Scroll to top', action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
     ];
 
-    /**
-     * Renders the list of commands based on the filter.
-     */
-    function renderResults(filteredCommands) {
-        resultsContainer.innerHTML = '';
-        filteredCommands.forEach((command, index) => {
-            const li = document.createElement('li');
-            li.textContent = command.name;
-            if (index === 0) {
-                li.classList.add('selected');
-            }
-            li.addEventListener('click', () => {
-                command.action();
-                closePalette();
-            });
-            resultsContainer.appendChild(li);
-        });
-    }
 
     /**
      * Opens the command palette.
@@ -509,6 +521,8 @@ function initCommandPalette() {
     function openPalette() {
         overlay.classList.add('visible');
         input.focus();
+        input.value = '';
+        selectedIndex = 0;
         renderResults(commands);
     }
 
@@ -542,10 +556,49 @@ function initCommandPalette() {
         }
     });
 
+    let selectedIndex = 0;
+
+    /**
+     * Updates the selected item in the command palette.
+     */
+    function updateSelection(index, total) {
+        const items = resultsContainer.querySelectorAll('li');
+        items.forEach((item, i) => {
+            item.classList.toggle('selected', i === index);
+        });
+        // Scroll selected item into view
+        if (items[index]) {
+            items[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    /**
+     * Renders the list of commands based on the filter.
+     */
+    function renderResults(filteredCommands) {
+        resultsContainer.innerHTML = '';
+        filteredCommands.forEach((command, index) => {
+            const li = document.createElement('li');
+            li.textContent = command.name;
+            if (index === 0) {
+                li.classList.add('selected');
+                selectedIndex = 0;
+            }
+            li.addEventListener('click', () => {
+                command.action();
+                closePalette();
+            });
+            resultsContainer.appendChild(li);
+        });
+    }
+
     // Filter commands as the user types with smooth animation
     input.addEventListener('input', () => {
         const query = input.value.toLowerCase();
         const filteredCommands = commands.filter(command => command.name.toLowerCase().includes(query));
+        
+        // Reset selection to first item
+        selectedIndex = 0;
         
         // Add fade effect
         resultsContainer.style.opacity = '0';
@@ -555,13 +608,27 @@ function initCommandPalette() {
         }, 150);
     });
 
-    // Execute the selected command on 'Enter' key press
+    // Enhanced keyboard navigation
     input.addEventListener('keydown', (e) => {
+        const items = resultsContainer.querySelectorAll('li');
+        const total = items.length;
+        
         if (e.key === 'Enter') {
+            e.preventDefault();
             const selected = resultsContainer.querySelector('.selected');
             if (selected) {
                 selected.click();
             }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectedIndex = (selectedIndex + 1) % total;
+            updateSelection(selectedIndex, total);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            selectedIndex = (selectedIndex - 1 + total) % total;
+            updateSelection(selectedIndex, total);
+        } else if (e.key === 'Escape') {
+            closePalette();
         }
     });
 }
@@ -691,11 +758,11 @@ function initSmoothScrolling() {
  */
 function initLoadAnimations() {
     // Fade in sections as the DOM loads
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('section').forEach((section, index) => {
-            setTimeout(() => {
-                section.style.opacity = '1';
-            }, index * 100);
-        });
+    document.querySelectorAll('section').forEach((section, index) => {
+        section.style.opacity = '0';
+        setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transition = 'opacity 0.6s ease';
+        }, index * 100);
     });
 }
