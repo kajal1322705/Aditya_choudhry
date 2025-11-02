@@ -386,6 +386,8 @@ function initCartoonAssistant() {
  */
 function initSkillBubbles() {
     const skillContainers = document.querySelectorAll('.skill-items');
+    // Exit if there are no skill containers on the current page
+    if (skillContainers.length === 0) return;
 
     skillContainers.forEach(container => {
         const skills = container.querySelectorAll('.skill-tag');
