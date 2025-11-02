@@ -28,6 +28,7 @@ function debounce(func, wait) {
 
 function initParticleAnimation() {
     const canvas = document.getElementById('particleCanvas');
+    if (!canvas) return; // Exit if canvas is not on the page
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
