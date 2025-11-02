@@ -45,7 +45,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--darker-bg);
     color: var(--gray-text);
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
 }
 
@@ -784,16 +784,15 @@ body.light-mode .hamburger span {
 .achievements-list li {
     color: var(--gray-text);
     padding: 0.75rem 0;
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .achievements-list i {
-    color: var(--primary-color);
-    margin-top: 0.25rem;
-    flex-shrink: 0;
+    color: var(--primary-color);    
+    margin-top: 0.35rem;
 }
 
 .closing-statement {
