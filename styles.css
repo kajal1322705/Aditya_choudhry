@@ -257,7 +257,7 @@ body.light-mode .hamburger span {
 }
 
 .hero-title {
-    font-size: clamp(2.25rem, 8vw, 4.5rem);
+    font-size: var(--fs-xxl);
     margin-bottom: 1rem;
     font-weight: 700;
     animation: fadeInUp 1s ease 0.2s both;
@@ -282,7 +282,7 @@ body.light-mode .hamburger span {
 }
 
 .hero-subtitle {
-    font-size: clamp(1.125rem, 4vw, 1.5rem);
+    font-size: var(--fs-lg);
     color: var(--gray-text);
     margin-bottom: 2.5rem;
     min-height: 2.5rem;
@@ -387,11 +387,11 @@ body.light-mode .hamburger span {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
+    padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 2rem);
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-size: var(--fs-xl);
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
@@ -440,7 +440,7 @@ body.light-mode .hamburger span {
 }
 
 .lead {
-    font-size: var(--fs-lg);
+    font-size: clamp(1.125rem, 2vw + 0.8rem, 1.35rem);
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-weight: 600;
@@ -540,7 +540,7 @@ body.light-mode .hamburger span {
 
 .skill-category h3 {
     color: var(--primary-color);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     font-size: clamp(1.125rem, 2vw, 1.5rem);
     display: flex;
     align-items: center;
@@ -583,6 +583,7 @@ body.light-mode .hamburger span {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
+    row-gap: 0.75rem;
     flex-wrap: wrap;
 }
 
@@ -611,7 +612,7 @@ body.light-mode .hamburger span {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
 }
 
@@ -653,7 +654,7 @@ body.light-mode .hamburger span {
 
 .project-card h3 {
     font-size: clamp(1.25rem, 2vw, 1.5rem);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--light-text);
 }
 
@@ -725,6 +726,7 @@ body.light-mode .hamburger span {
 .contact-method {
     background: var(--card-bg);
     padding: 2rem;
+    text-align: left;
     border-radius: 15px;
     text-decoration: none;
     color: var(--light-text);
@@ -860,7 +862,7 @@ body.light-mode .hamburger span {
 
 .timeline-header h3 {
     color: var(--light-text);
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 0.5rem;
 }
 
@@ -942,7 +944,7 @@ body.light-mode .hamburger span {
 
 .education-card h3 {
     color: var(--light-text);
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 0.75rem;
 }
 
@@ -1038,7 +1040,7 @@ body.light-mode .hamburger span {
 
 .certification-card h4 {
     color: var(--light-text);
-    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 1.15rem);
     margin-bottom: 0.75rem;
 }
 
@@ -1138,22 +1140,19 @@ body.light-mode .hamburger span {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
 
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 767px) {
     .hero {
+        min-height: 90vh;
+    }
+
+    .container {
         padding: 1rem;
     }
 
     .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.125rem;
+        /* Font size handled by clamp() */
     }
 
     .hero-buttons {
@@ -1168,9 +1167,7 @@ body.light-mode .hamburger span {
         width: 100%;
     }
 
-    .section-title {
-        font-size: 2rem;
-    }
+    .section-title { /* Font size handled by clamp() */ }
 
     .timeline::before {
         left: 10px;
@@ -1178,6 +1175,10 @@ body.light-mode .hamburger span {
 
     .timeline-item {
         padding-left: 40px;
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
     }
 
     .timeline-dot {
@@ -1191,10 +1192,18 @@ body.light-mode .hamburger span {
     .certifications-grid {
         grid-template-columns: 1fr;
     }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 500px) {
     .contact-method {
+        text-align: center;
+    }
+
+    .contact-method > div {
         flex-direction: column;
         text-align: center;
     }
@@ -1204,12 +1213,60 @@ body.light-mode .hamburger span {
 }
 
 @media (max-width: 360px) {
-    .hero-title {
-        font-size: 1.5rem;
+    .timeline-item {
+        padding-left: 35px;
+    }
+
+    .nav-container {
+        padding: 1rem 0.75rem;
     }
 
     .nav-logo {
         font-size: 1.25rem;
+    }
+}
+
+/* --- Large Screen Enhancements --- */
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1380px;
+    }
+
+    .skills-grid, .projects-grid, .articles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .projects-grid, .articles-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 2560px) {
+    .container {
+        max-width: 1920px;
+    }
+
+    .projects-grid, .articles-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
