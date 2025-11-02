@@ -20,6 +20,7 @@ body.light-mode {
     --gray-text: #475569;
     --card-bg: #f8fafc;
     --hover-bg: #e2e8f0;
+    --border-color: rgba(99, 102, 241, 0.2);
 }
 
 body {
@@ -39,7 +40,7 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--darker-bg);
-    color: var(--light-text);
+    color: var(--gray-text);
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -62,12 +63,12 @@ body {
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    border-bottom: 1px solid var(--border-color);
 }
 
 body.light-mode .navbar {
     background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    border-bottom-color: var(--border-color);
 }
 
 .navbar.scrolled {
@@ -83,7 +84,7 @@ body.light-mode .navbar.scrolled {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1rem clamp(1rem, 5vw, 2rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,7 +109,7 @@ body.light-mode .navbar.scrolled {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1rem);
     z-index: 1001;
 }
 
@@ -227,7 +228,7 @@ body.light-mode .hamburger span {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     padding: 2rem;
     position: relative;
 }
@@ -235,6 +236,8 @@ body.light-mode .hamburger span {
 .hero-content {
     text-align: center;
     max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
     animation: fadeInUp 1s ease;
 }
 
@@ -250,7 +253,7 @@ body.light-mode .hamburger span {
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2.25rem, 8vw, 4.5rem);
     margin-bottom: 1rem;
     font-weight: 700;
     animation: fadeInUp 1s ease 0.2s both;
@@ -275,9 +278,9 @@ body.light-mode .hamburger span {
 }
 
 .hero-subtitle {
-    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-size: clamp(1.125rem, 4vw, 1.5rem);
     color: var(--gray-text);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     min-height: 2.5rem;
     animation: fadeInUp 1s ease 0.4s both;
 }
@@ -380,7 +383,7 @@ body.light-mode .hamburger span {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
 }
 
 .section-title {
@@ -412,7 +415,7 @@ body.light-mode .hamburger span {
 .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 3rem;
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
 }
 
@@ -433,14 +436,14 @@ body.light-mode .hamburger span {
 }
 
 .lead {
-    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-size: var(--fs-lg);
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
 .about-text p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     color: var(--gray-text);
     line-height: 1.8;
 }
@@ -448,6 +451,7 @@ body.light-mode .hamburger span {
 .social-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
     margin-top: 2rem;
 }
 
@@ -519,7 +523,7 @@ body.light-mode .hamburger span {
     transform: translateY(30px);
     border: 1px solid rgba(99, 102, 241, 0.1);
 }
-
+.skill-category, .project-card, .timeline-content, .education-card, .certification-card { border: 1px solid var(--border-color); }
 .skill-category.animate {
     animation: fadeInUp 0.6s ease forwards;
 }
@@ -532,7 +536,7 @@ body.light-mode .hamburger span {
 
 .skill-category h3 {
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     font-size: clamp(1.125rem, 2vw, 1.5rem);
     display: flex;
     align-items: center;
@@ -551,7 +555,7 @@ body.light-mode .hamburger span {
 
 .skill-tag {
     background: rgba(99, 102, 241, 0.1);
-    color: var(--light-text);
+    color: var(--gray-text);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -562,6 +566,7 @@ body.light-mode .hamburger span {
 
 .skill-tag:hover {
     background: var(--primary-color);
+    color: white;
     transform: scale(1.05);
 }
 
@@ -580,7 +585,7 @@ body.light-mode .hamburger span {
 .filter-btn {
     padding: 0.75rem 1.5rem;
     background: var(--card-bg);
-    color: var(--light-text);
+    color: var(--gray-text);
     border: 2px solid transparent;
     border-radius: 25px;
     cursor: pointer;
@@ -591,6 +596,7 @@ body.light-mode .hamburger span {
 
 .filter-btn:hover {
     border-color: var(--primary-color);
+    color: var(--light-text);
     transform: translateY(-2px);
 }
 
@@ -612,7 +618,6 @@ body.light-mode .hamburger span {
     transition: all 0.3s ease;
     opacity: 0;
     transform: scale(0.9);
-    border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .project-card.show {
@@ -650,7 +655,7 @@ body.light-mode .hamburger span {
 
 .project-card p {
     color: var(--gray-text);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     line-height: 1.6;
 }
 
@@ -658,7 +663,7 @@ body.light-mode .hamburger span {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .tech-badge {
@@ -723,7 +728,6 @@ body.light-mode .hamburger span {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .contact-method:hover {
@@ -749,7 +753,7 @@ body.light-mode .hamburger span {
 .footer {
     background: var(--darker-bg);
     padding: 2rem;
-    text-align: center;
+    text-align: center;    
     border-top: 1px solid rgba(99, 102, 241, 0.1);
 }
 
@@ -841,7 +845,6 @@ body.light-mode .hamburger span {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(99, 102, 241, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -912,7 +915,6 @@ body.light-mode .hamburger span {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(99, 102, 241, 0.1);
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
@@ -1008,7 +1010,6 @@ body.light-mode .hamburger span {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(99, 102, 241, 0.1);
     text-align: center;
     transition: all 0.3s ease;
     opacity: 0;
@@ -1070,7 +1071,7 @@ body.light-mode .hamburger span {
     margin-right: 0.5rem;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 1024px) {
     .hamburger {
         display: flex;
     }
@@ -1121,10 +1122,6 @@ body.light-mode .hamburger span {
         text-align: left;
     }
 
-    .achievements-list li {
-        font-size: 0.95rem;
-    }
-
     .social-links {
         justify-content: center;
     }
@@ -1142,11 +1139,7 @@ body.light-mode .hamburger span {
     }
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 3rem 1.5rem;
-    }
-
+@media (max-width: 767px) {
     .hero {
         padding: 1rem;
     }
@@ -1161,6 +1154,7 @@ body.light-mode .hamburger span {
 
     .hero-buttons {
         flex-direction: column;
+        align-items: center;
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
@@ -1195,51 +1189,13 @@ body.light-mode .hamburger span {
     }
 }
 
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 1rem;
-    }
-
-    .hero-title {
-        font-size: 1.75rem;
-    }
-
-    .container {
-        padding: 2rem 1rem;
-    }
-
-    .filter-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-card {
-        padding: 1.5rem;
-    }
-
-    .skill-category {
-        padding: 1.5rem;
-    }
-
-    .timeline-content {
-        padding: 1.5rem;
-    }
-
-    .education-card {
-        padding: 1.5rem;
-    }
-
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-
+@media (max-width: 500px) {
     .contact-method {
         flex-direction: column;
         text-align: center;
+    }
+    .timeline-content, .education-card, .project-card, .skill-category {
+        padding: 1.5rem;
     }
 }
 
@@ -1251,4 +1207,31 @@ body.light-mode .hamburger span {
     .nav-logo {
         font-size: 1.25rem;
     }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    text-decoration: none;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
