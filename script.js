@@ -7,77 +7,122 @@ canvas.height = window.innerHeight;
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    initParticles();
+    initTechBackground();
 });
 
-class Particle {
+class TechNode {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
-        this.color = `rgba(99, 102, 241, ${Math.random() * 0.5 + 0.2})`;
+        this.radius = Math.random() * 3 + 2;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.pulseSpeed = Math.random() * 0.02 + 0.01;
+        this.pulse = 0;
     }
 
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
+        this.pulse += this.pulseSpeed;
 
         if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
         if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
     }
 
     draw() {
-        ctx.fillStyle = this.color;
+        const isLightMode = document.body.classList.contains('light-mode');
+        const baseColor = isLightMode ? '79, 70, 229' : '99, 102, 241';
+        const opacity = 0.3 + Math.sin(this.pulse) * 0.2;
+        
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${baseColor}, ${opacity})`;
         ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius + 3, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${baseColor}, ${opacity * 0.3})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
     }
 }
 
-let particles = [];
+let nodes = [];
+let pipelines = [];
 
-function initParticles() {
-    particles = [];
-    const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+function initTechBackground() {
+    nodes = [];
+    pipelines = [];
+    const nodeCount = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push(new TechNode());
     }
 }
 
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawPipelines() {
+    const isLightMode = document.body.classList.contains('light-mode');
+    const baseColor = isLightMode ? '79, 70, 229' : '99, 102, 241';
     
-    for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 100) {
-                ctx.strokeStyle = `rgba(99, 102, 241, ${0.2 * (1 - distance / 100)})`;
-                ctx.lineWidth = 1;
+            if (distance < 150) {
+                const opacity = 0.15 * (1 - distance / 150);
                 ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.strokeStyle = `rgba(${baseColor}, ${opacity})`;
+                ctx.lineWidth = 1;
                 ctx.stroke();
+                
+                const midX = (nodes[i].x + nodes[j].x) / 2;
+                const midY = (nodes[i].y + nodes[j].y) / 2;
+                ctx.beginPath();
+                ctx.arc(midX, midY, 2, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${baseColor}, ${opacity * 2})`;
+                ctx.fill();
             }
         }
     }
-
-    requestAnimationFrame(animateParticles);
 }
 
-initParticles();
-animateParticles();
+function animateTechBackground() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    drawPipelines();
+    
+    for (let node of nodes) {
+        node.update();
+        node.draw();
+    }
+
+    requestAnimationFrame(animateTechBackground);
+}
+
+initTechBackground();
+animateTechBackground();
+
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
 
 const typedText = document.getElementById('typed-text');
 const textArray = [
     'Full Stack Developer',
+    'AI Software Engineer',
     'Security Enthusiast',
     'Open Source Contributor',
     'Problem Solver'
@@ -113,8 +158,22 @@ function typeText() {
 
 setTimeout(typeText, 1000);
 
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 const navbar = document.querySelector('.navbar');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
@@ -146,10 +205,12 @@ navLinks.forEach(link => {
         const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
         
-        window.scrollTo({
-            top: targetSection.offsetTop - 80,
-            behavior: 'smooth'
-        });
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -230,28 +291,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-let mouseX = 0;
-let mouseY = 0;
-let cursorX = 0;
-let cursorY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.1;
-    cursorY += (mouseY - cursorY) * 0.1;
-    requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
 window.addEventListener('load', () => {
     projects.forEach((project, index) => {
         setTimeout(() => {
             project.classList.add('show');
+        }, index * 100);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        setTimeout(() => {
+            section.style.opacity = '1';
         }, index * 100);
     });
 });
