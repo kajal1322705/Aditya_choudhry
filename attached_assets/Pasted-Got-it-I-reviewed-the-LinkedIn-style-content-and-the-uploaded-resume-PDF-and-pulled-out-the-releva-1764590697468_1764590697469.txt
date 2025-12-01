@@ -1,0 +1,57 @@
+Got it — I reviewed the LinkedIn-style content and the uploaded resume PDF and pulled out the relevant contact, summary, tech stack, experience, projects, and education. I turned those into clean, resume-ready **Work History** entries plus a compact header and tech summary you can paste into LinkedIn or a CV. Source: 
+
+# Aditya Choudhry — Contact
+
+* Remote – India · +91-9729990899 · [aditya.gardian@gmail.com](mailto:aditya.gardian@gmail.com)
+* LinkedIn: [www.linkedin.com/in/aditya-choudhry](http://www.linkedin.com/in/aditya-choudhry) · GitHub: (from PDF)
+
+# Professional summary (one line)
+
+Results-driven Full-Stack Engineer with 3+ years of remote-first experience building scalable web apps and production-grade APIs using Node.js, React and TypeScript—experienced in healthcare/AI integrations, DevOps automation, and RBAC/JWT security. 
+
+# Technical stack (short)
+
+Backend: Node.js, Express, REST APIs, JWT, MySQL, PostgreSQL, MongoDB.
+Frontend: React, TypeScript, Next.js, Redux, TailwindCSS, Bootstrap.
+DevOps & Testing: Docker, GitHub Actions / Azure Pipelines / Jenkins, Postman, Jest, CI/CD, Linux scripting. 
+
+# Work history (resume-ready — pasteable)
+
+**Full Stack Developer (Contract)**
+*Sphere Outsourcing / Guby Rogers / Technozis — Remote, India*
+**Nov 2019 – Dec 2024**
+
+* Developed high-performance backend services using Node.js and Express to support large user bases (handled 200K+ users).
+* Built dynamic, type-safe React components with TypeScript for real-time UIs in healthcare and logistics domains.
+* Designed and implemented RESTful APIs with secure JWT-based authentication and role-based access control (RBAC).
+* Implemented containerized deployment flows using Docker and automated CI/CD with GitHub Actions and Azure Pipelines.
+* Optimized database queries and worked with MySQL/PostgreSQL to support scalable data operations.
+* Led code reviews, enforced quality standards and mentored junior engineers, improving team delivery and code quality. 
+
+# Key projects (concise bullets you can include under the role or separately)
+
+* **Clinical Dashboard (React + TypeScript)** — Responsive provider dashboard displaying real-time patient data via secure APIs; focused on performance and UX for clinical workflows.
+* **Inventory API (Node + MySQL)** — REST API for inventory & audit trail; managed 10K+ SKUs, implemented query optimizations and pagination for large datasets.
+* **AI-Powered Search POC (JavaScript)** — Prototype for LLM-integrated search with intelligent ranking and experimental LLM prompts.
+* **Task Tracker App (React + Node)** — Full-stack role-based task manager with login/registration, CRUD, and JWT authentication. 
+
+# Education
+
+* **Master of Computer Applications (MCA)** — MMU University, Ambala (2022–2024).
+* **Bachelor of Technology (BTech), Civil Engineering** — DIT University, Dehradun (2015–2019). 
+
+# Additional (quick facts)
+
+* Availability: Immediate — Remote, Full-time.
+* Passport: Ready.
+* Certifications include Responsive Web Design (freeCodeCamp) and HackerRank Software Engineer Certificate (Jun 2025). 
+
+---
+
+If you want, I’ll now:
+
+* convert these into a polished chronological **LinkedIn Experience** text block for the Experience section, or
+* produce a one-page resume PDF using this content, or
+* tighten the bullets to target **specific job roles** (e.g., Senior Node Engineer, Full-Stack React) with tailored keywords for ATS.
+
+Pick one and I’ll generate it right away — no waiting.

@@ -12,6 +12,7 @@
     --bg: #ffffff;
     --bg-alt: #f9fafb;
     --border: #e5e7eb;
+    --success: #10b981;
 }
 
 body {
@@ -118,7 +119,7 @@ ul {
 
 .bio {
     color: var(--text-light);
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto 30px;
 }
 
@@ -198,6 +199,26 @@ section h2 {
     margin-bottom: 15px;
 }
 
+.about-text strong {
+    color: var(--primary);
+}
+
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.availability-badge i {
+    font-size: 0.5rem;
+}
+
 .about-stats {
     display: flex;
     flex-direction: column;
@@ -271,12 +292,152 @@ section h2 {
     line-height: 1.6;
 }
 
-.about-text strong {
+.experience {
+    background: var(--bg-alt);
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--primary);
+    padding-bottom: 30px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 3px solid var(--bg-alt);
+}
+
+.timeline-content {
+    background: var(--bg);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.timeline-header h3 {
+    color: var(--text);
+    font-size: 1.2rem;
+}
+
+.timeline-date {
     color: var(--primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.timeline-company {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.timeline-list {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.timeline-list li {
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.education-section {
+    margin-top: 60px;
+}
+
+.education-section h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text);
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-card {
+    background: var(--bg);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.education-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.education-icon i {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.education-info h4 {
+    color: var(--text);
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.education-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.education-date {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .skills {
-    background: var(--bg-alt);
+    background: var(--bg);
+}
+
+.skills-category {
+    margin-bottom: 40px;
+}
+
+.skills-category h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--text);
+    text-align: center;
 }
 
 .skills-grid {
@@ -286,8 +447,8 @@ section h2 {
 }
 
 .skill-card {
-    background: var(--bg);
-    padding: 30px 20px;
+    background: var(--bg-alt);
+    padding: 25px 20px;
     border-radius: 8px;
     text-align: center;
     border: 1px solid var(--border);
@@ -300,18 +461,18 @@ section h2 {
 }
 
 .skill-card i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--primary);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.skill-card h3 {
-    font-size: 1rem;
+.skill-card h4 {
+    font-size: 0.9rem;
     color: var(--text);
 }
 
 .projects {
-    background: var(--bg);
+    background: var(--bg-alt);
 }
 
 .projects-grid {
@@ -321,7 +482,7 @@ section h2 {
 }
 
 .project-card {
-    background: var(--bg-alt);
+    background: var(--bg);
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
@@ -346,6 +507,7 @@ section h2 {
     color: var(--text-light);
     font-size: 0.9rem;
     margin-bottom: 15px;
+    line-height: 1.5;
 }
 
 .project-tags {
@@ -363,7 +525,7 @@ section h2 {
 }
 
 .contact {
-    background: var(--bg-alt);
+    background: var(--bg);
     text-align: center;
 }
 
@@ -376,7 +538,9 @@ section h2 {
 .contact-info {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
 .contact-item {
@@ -384,11 +548,12 @@ section h2 {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 20px 30px;
-    background: var(--bg);
+    padding: 20px 25px;
+    background: var(--bg-alt);
     border-radius: 8px;
     border: 1px solid var(--border);
     transition: all 0.3s;
+    min-width: 150px;
 }
 
 .contact-item:hover {
@@ -398,6 +563,46 @@ section h2 {
 
 .contact-item i {
     font-size: 1.5rem;
+}
+
+.contact-item span {
+    font-size: 0.85rem;
+}
+
+.certifications {
+    margin-top: 20px;
+}
+
+.certifications h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.cert-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-alt);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.cert-badge i {
+    color: var(--primary);
+}
+
+.cert-badge span {
+    color: var(--text);
+    font-size: 0.9rem;
 }
 
 .footer {
@@ -453,6 +658,19 @@ section h2 {
     .about-stats {
         flex-direction: row;
         justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .stat {
+        min-width: 100px;
+    }
+
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
     }
 
     .skills-grid {
@@ -468,7 +686,13 @@ section h2 {
         align-items: center;
     }
 
-    .expertise-grid {
-        grid-template-columns: 1fr;
+    .contact-item {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
