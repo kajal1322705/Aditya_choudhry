@@ -1,46 +1,86 @@
 # Aditya Choudhry - Portfolio
 
 ## Overview
-A clean, professional portfolio website showcasing work experience, skills, and projects. Built with vanilla HTML, CSS, and JavaScript.
+A clean, modular portfolio website. All content is configured in a single config file for easy updates.
 
-## Contact Information
-- Email: aditya.gardian@gmail.com
-- Phone: +91-9729990899
-- LinkedIn: linkedin.com/in/aditya-choudhry
-- GitHub: github.com/kajal1322705
+## How to Update Content
+
+**Edit `config.js` to change any content:**
+
+### Personal Info
+```javascript
+personal: {
+    name: "Your Name",
+    title: "Your Title",
+    bio: "Your bio...",
+    email: "your@email.com",
+    phone: "+1-234-567-8900",
+    github: "https://github.com/username",
+    linkedin: "https://linkedin.com/in/username"
+}
+```
+
+### Add/Remove Stats
+```javascript
+stats: [
+    { number: "5+", label: "Years Experience" },
+    { number: "50+", label: "Projects" }
+]
+```
+
+### Add/Remove Experience
+```javascript
+experience: [
+    {
+        title: "Job Title",
+        date: "2020 – Present",
+        company: "Company Name",
+        responsibilities: [
+            "Did this...",
+            "Did that..."
+        ]
+    }
+]
+```
+
+### Add/Remove Skills
+```javascript
+skills: {
+    "Category Name": [
+        { icon: "fab fa-react", name: "React" },
+        { icon: "fab fa-node", name: "Node.js" }
+    ]
+}
+```
+
+### Add/Remove Projects
+```javascript
+projects: [
+    {
+        title: "Project Name",
+        description: "What it does...",
+        tags: ["React", "Node.js"]
+    }
+]
+```
 
 ## Project Structure
 ```
 .
-├── index.html          # Main HTML page
-├── styles.css          # Styling
-├── app.js              # JavaScript (mobile menu, smooth scroll)
-├── server.py           # Python HTTP server on port 5000
-└── replit.md           # Documentation
+├── index.html      # HTML structure (don't edit for content)
+├── styles.css      # All styling
+├── config.js       # ⭐ EDIT THIS to change content
+├── app.js          # Renders config to HTML
+└── server.py       # Python server (port 5000)
 ```
 
-## Sections
-1. **Hero**: Introduction with professional summary
-2. **About**: Bio with stats (3+ years, 200K+ users, 10+ projects) and areas of expertise
-3. **Experience**: Work history timeline (Nov 2019 – Dec 2024)
-4. **Skills**: Technical stack organized by category (Backend, Frontend, Database, DevOps)
-5. **Projects**: 6 detailed project cards with descriptions
-6. **Contact**: Email, phone, social links, and certifications
-7. **Footer**: Copyright
+## Icons Reference
+Use Font Awesome icons. Find icons at: https://fontawesome.com/icons
+- fab fa-react, fab fa-node, fab fa-angular
+- fas fa-database, fas fa-server, fas fa-code
 
-## Key Features
-- Areas of Expertise: Project Security, Quantum Computing, Microservices, End-to-End Architecture
-- Work Experience: Full Stack Developer at Sphere Outsourcing / Guby Rogers / Technozis
-- Education: MCA from MMU University, BTech from DIT University
-- Certifications: freeCodeCamp, HackerRank
-
-## Technologies Used
-- HTML5
-- CSS3 (Flexbox, Grid)
-- Vanilla JavaScript
-- Font Awesome Icons
-
-## Technical Stack
-- Backend: Node.js, Express, REST APIs, JWT, MySQL, PostgreSQL, MongoDB
-- Frontend: React, TypeScript, Next.js, Redux, TailwindCSS
-- DevOps: Docker, GitHub Actions, Azure Pipelines, Jenkins, Linux
+## Contact Info
+- Email: aditya.gardian@gmail.com
+- Phone: +91-9729990899
+- GitHub: github.com/kajal1322705
+- LinkedIn: linkedin.com/in/aditya-choudhry
