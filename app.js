@@ -18,7 +18,7 @@ class Preloader {
                 this.preloader.classList.add('hidden');
                 document.body.style.overflow = '';
                 this.initAnimations();
-            }, 500);
+            }, 300);
         };
         
         if (document.readyState === 'complete') {
@@ -283,6 +283,20 @@ class Particles {
         this.canvas.height = this.canvas.offsetHeight;
     }
 
+    getThemeColor() {
+        const style = getComputedStyle(document.documentElement);
+        return style.getPropertyValue('--primary').trim() || '#6366f1';
+    }
+
+    hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : { r: 99, g: 102, b: 241 };
+    }
+
     createParticles() {
         for (let i = 0; i < this.particleCount; i++) {
             this.particles.push({
@@ -299,6 +313,9 @@ class Particles {
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
+        const themeColor = this.getThemeColor();
+        const rgb = this.hexToRgb(themeColor);
+        
         this.particles.forEach(p => {
             p.x += p.vx;
             p.y += p.vy;
@@ -308,7 +325,7 @@ class Particles {
             
             this.ctx.beginPath();
             this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+            this.ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${p.opacity})`;
             this.ctx.fill();
         });
 
@@ -322,7 +339,7 @@ class Particles {
                     this.ctx.beginPath();
                     this.ctx.moveTo(p1.x, p1.y);
                     this.ctx.lineTo(p2.x, p2.y);
-                    this.ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - distance / 100)})`;
+                    this.ctx.strokeStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${0.1 * (1 - distance / 100)})`;
                     this.ctx.stroke();
                 }
             });
