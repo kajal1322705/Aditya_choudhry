@@ -1,11 +1,18 @@
-# Aditya Choudhry - Portfolio
+# Aditya Choudhry - Ubuntu OS Portfolio
 
 ## Overview
-A clean, modular portfolio website. All content is configured in a single config file for easy updates.
+An Ubuntu OS-style portfolio website with login screen, desktop icons, and file explorer-like windows for each section.
+
+## Features
+- **Login Screen**: Ubuntu-themed login with user avatar and password field
+- **Desktop Interface**: Desktop icons for Home, About, Experience, Skills, Projects, Contact
+- **Window System**: Each section opens as a draggable, closeable window (like file explorer)
+- **Dock**: Bottom dock bar for quick access to sections
+- **Top Panel**: Ubuntu-style panel with date/time and logout
 
 ## How to Update Content
 
-**Edit `config.js` to change any content:**
+**Edit `config.js` to change ALL content:**
 
 ### Personal Info
 ```javascript
@@ -20,14 +27,6 @@ personal: {
 }
 ```
 
-### Add/Remove Stats
-```javascript
-stats: [
-    { number: "5+", label: "Years Experience" },
-    { number: "50+", label: "Projects" }
-]
-```
-
 ### Add/Remove Experience
 ```javascript
 experience: [
@@ -35,10 +34,7 @@ experience: [
         title: "Job Title",
         date: "2020 – Present",
         company: "Company Name",
-        responsibilities: [
-            "Did this...",
-            "Did that..."
-        ]
+        responsibilities: ["Task 1", "Task 2"]
     }
 ]
 ```
@@ -67,17 +63,23 @@ projects: [
 ## Project Structure
 ```
 .
-├── index.html      # HTML structure (don't edit for content)
-├── styles.css      # All styling
+├── index.html      # HTML structure (login + desktop)
+├── styles.css      # Ubuntu theme styling
 ├── config.js       # ⭐ EDIT THIS to change content
-├── app.js          # Renders config to HTML
-└── server.py       # Python server (port 5000)
+└── app.js          # OS interface logic (login, windows, drag)
 ```
 
+## Usage
+1. Open the site - see Ubuntu login screen
+2. Press Enter or click arrow to login
+3. Double-click desktop icons to open windows
+4. Drag windows by title bar
+5. Close/minimize/maximize with window controls
+6. Click dock icons for quick access
+7. Click power icon to logout
+
 ## Icons Reference
-Use Font Awesome icons. Find icons at: https://fontawesome.com/icons
-- fab fa-react, fab fa-node, fab fa-angular
-- fas fa-database, fas fa-server, fas fa-code
+Use Font Awesome icons: https://fontawesome.com/icons
 
 ## Contact Info
 - Email: aditya.gardian@gmail.com

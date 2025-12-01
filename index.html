@@ -3,77 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Ubuntu Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">AC</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-toggle" id="mobileToggle">
-                <i class="fas fa-bars"></i>
-            </button>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-container">
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2 class="user-name" id="loginUserName">Aditya Choudhry</h2>
+            <div class="password-field">
+                <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+                <button class="login-btn" id="loginBtn">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <p class="login-hint">Hint: Just press Enter or click the arrow</p>
         </div>
-    </nav>
+        <div class="login-footer">
+            <div class="power-options">
+                <button class="power-btn" title="Accessibility">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+            </div>
+            <div class="datetime" id="loginDateTime"></div>
+        </div>
+    </div>
 
-    <section id="home" class="hero">
-        <div class="container" id="heroContent"></div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content" id="aboutContent"></div>
-            <div class="experience-section">
-                <h3>Areas of Expertise</h3>
-                <div class="expertise-grid" id="expertiseGrid"></div>
+    <!-- Desktop -->
+    <div class="desktop" id="desktop">
+        <!-- Top Panel -->
+        <div class="top-panel">
+            <div class="panel-left">
+                <span class="activities">Activities</span>
+            </div>
+            <div class="panel-center">
+                <span id="panelDateTime"></span>
+            </div>
+            <div class="panel-right">
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-volume-up"></i>
+                <i class="fas fa-battery-full"></i>
+                <i class="fas fa-power-off" id="logoutBtn" title="Logout"></i>
             </div>
         </div>
-    </section>
 
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2>Work Experience</h2>
-            <div class="timeline" id="experienceTimeline"></div>
-            <div class="education-section">
-                <h3>Education</h3>
-                <div class="education-grid" id="educationGrid"></div>
-            </div>
-        </div>
-    </section>
+        <!-- Desktop Icons -->
+        <div class="desktop-icons" id="desktopIcons"></div>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div id="skillsContainer"></div>
-        </div>
-    </section>
+        <!-- Windows Container -->
+        <div class="windows-container" id="windowsContainer"></div>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="projects-grid" id="projectsGrid"></div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container" id="contactContent"></div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 <span id="footerName"></span>. All rights reserved.</p>
-        </div>
-    </footer>
+        <!-- Dock -->
+        <div class="dock" id="dock"></div>
+    </div>
 
     <script src="config.js"></script>
     <script src="app.js"></script>
