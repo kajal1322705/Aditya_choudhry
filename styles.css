@@ -223,6 +223,58 @@ section h2 {
     font-size: 0.9rem;
 }
 
+.experience-section {
+    margin-top: 60px;
+}
+
+.experience-section h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text);
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.expertise-card {
+    background: var(--bg-alt);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.expertise-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.expertise-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.expertise-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.about-text strong {
+    color: var(--primary);
+}
+
 .skills {
     background: var(--bg-alt);
 }
@@ -414,5 +466,9 @@ section h2 {
     .contact-info {
         flex-direction: column;
         align-items: center;
+    }
+
+    .expertise-grid {
+        grid-template-columns: 1fr;
     }
 }
