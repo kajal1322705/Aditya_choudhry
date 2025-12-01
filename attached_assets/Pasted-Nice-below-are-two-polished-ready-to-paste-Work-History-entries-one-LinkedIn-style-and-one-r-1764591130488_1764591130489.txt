@@ -1,0 +1,60 @@
+Nice — below are two polished, ready-to-paste **Work History** entries (one LinkedIn-style and one resume-style) for each role you provided. I kept the language direct and impact-focused so recruiters and hiring managers get the facts fast. Paste whichever format you need.
+
+---
+
+# Hawk Sense Business Solutions Pvt Ltd — Full Stack Engineer
+
+**Sep 2024 – Present · Hybrid · Full-time**
+
+**LinkedIn / Profile-ready (1–2 lines + bullets)**
+Full Stack Engineer building enterprise-grade web apps and microservices. Work spans backend APIs (Spring Boot), frontend Angular 15 modules, DevOps (Docker, Kubernetes, Azure DevOps) and test automation.
+
+* Developed RESTful APIs using **Java Spring Boot** for enterprise workflows and integrations.
+* Built responsive front-end modules with **Angular 15** and implemented component-driven UI patterns.
+* Migrated legacy **SOAP** services to a microservices architecture, enabling decoupled deployment and clearer service boundaries.
+* Implemented **Spring Security** with **JWT** for secure authentication and role-based access control.
+* Optimized database interactions across **PostgreSQL** and **MongoDB** to improve reliability and query efficiency.
+* Owned CI/CD pipelines with **Azure DevOps** and containerized builds using **Docker**; deployed services to **Kubernetes** clusters.
+* Wrote automated E2E and integration tests using **Selenium** and API tests with **Postman**.
+* Participated in Agile ceremonies, led code reviews, and mentored junior engineers to raise code quality and delivery velocity.
+
+**Resume-ready bullets (concise, ATS-friendly)**
+
+* Architected and implemented Spring Boot REST APIs for core enterprise features; enforced secure, token-based authentication (JWT) and RBAC.
+* Replaced monolithic SOAP integrations with microservices, simplifying deployments and enabling independent scaling.
+* Developed Angular 15 frontend modules with reusable components and state management for responsive admin and user dashboards.
+* Built and maintained CI/CD pipelines (Azure DevOps) with Docker images and Kubernetes deployments.
+* Improved data reliability by refining PostgreSQL queries and MongoDB data modeling; resolved performance bottlenecks.
+* Led automated testing efforts (Selenium, Postman) and mentored junior devs through code reviews and pairing sessions.
+
+---
+
+# Edu Startup — Full Stack Engineer (Self-employed / Contract)
+
+**Nov 2019 – Dec 2024 · Delhi, India · Hybrid**
+
+**LinkedIn / Profile-ready (1–2 lines + bullets)**
+Full-stack engineer delivering scalable web platforms, microservices, and DevOps automation. Focused on Spring Boot backends, React/TypeScript frontends, CI/CD, and security.
+
+* Engineered **Spring Boot** microservices supporting large user volumes; maintained reliability and monitoring.
+* Implemented **JWT-based authentication** and RBAC across mobile and web clients.
+* Automated Docker-based CI/CD with **Jenkins** and **GitHub Actions** to shorten release cycles.
+* Conducted architecture reviews, mentored engineers, and led performance optimization efforts.
+
+**Resume-ready bullets (with impact)**
+
+* Designed and developed Spring Boot microservices powering platform features; delivered stable services used by large user bases.
+* Implemented secure authentication using JWT and enforced role-based access control across services and clients.
+* Automated container builds and deployment pipelines using Docker, Jenkins, and GitHub Actions—reducing manual release steps.
+* Optimized backend throughput and availability; participated in on-call rotations and incident postmortems to improve system resilience.
+* Mentored junior developers and enforced engineering best practices through code reviews and knowledge-sharing sessions.
+
+---
+
+If you want these tailored further, I can:
+
+* merge both roles into a single one-page resume with a clean layout,
+* produce a version targeted specifically at **Java Spring Boot Backend**, **Angular Frontend**, or **DevOps** roles (add relevant keywords, reorder bullets), or
+* generate LinkedIn copy for the Experience section formatted for pasting (short headline + 4–6 bullets each).
+
+Pick one and I’ll produce the exact formatted text now.
