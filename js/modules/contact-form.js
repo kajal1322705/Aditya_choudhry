@@ -64,23 +64,20 @@ export class ContactFormModule {
     }
 
     async sendEmail(data) {
-        // Create mailto link as fallback
+        // Create mailto link
         const subject = encodeURIComponent(`Portfolio Contact from ${data.name}`);
         const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+        const mailtoLink = `mailto:contact@adityachoudhry.dev?subject=${subject}&body=${body}`;
         
-        // For demonstration, we'll show a success message
-        // In production, integrate with email service like SendGrid or Resend
         return new Promise((resolve) => {
-            // Simulate sending
-            setTimeout(() => {
-                // Open email client as fallback
-                const mailtoLink = `mailto:contact@adityachoudhry.dev?subject=${subject}&body=${body}`;
-                
-                // Try to send via API first, fallback to mailto
-                console.log('Contact form data:', data);
-                
-                resolve();
-            }, 1000);
+            // Log the submission
+            console.log('Contact form submitted:', data);
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Resolve after opening mail client
+            setTimeout(() => resolve(), 500);
         });
     }
 
