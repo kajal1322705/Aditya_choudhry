@@ -1,6 +1,7 @@
 /**
  * Navigation Module
  * Handles navbar, mobile menu, and active link highlighting
+ * With improved accessibility features
  */
 export class NavigationModule {
     constructor() {
@@ -9,29 +10,95 @@ export class NavigationModule {
         this.navLinks = document.querySelectorAll('.nav-link');
         this.stepperDots = document.querySelectorAll('.stepper-dot');
         this.navbar = document.querySelector('.navbar');
+        this.isMenuOpen = false;
         this.init();
     }
 
     init() {
         if (!this.hamburger || !this.navMenu || !this.navbar) return;
         
+        this.setupAccessibility();
         this.setupMobileMenu();
         this.setupScrollHandler();
+        this.setupKeyboardNavigation();
+    }
+    
+    setupAccessibility() {
+        this.hamburger.setAttribute('aria-expanded', 'false');
+        this.hamburger.setAttribute('aria-controls', 'navMenu');
+        this.hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+        this.navMenu.setAttribute('aria-hidden', 'true');
     }
 
     setupMobileMenu() {
         this.hamburger.addEventListener('click', () => {
-            this.hamburger.classList.toggle('active');
-            this.navMenu.classList.toggle('active');
+            this.toggleMenu();
         });
 
         this.navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (this.hamburger.offsetParent !== null) {
-                    this.hamburger.classList.remove('active');
-                    this.navMenu.classList.remove('active');
+                if (this.hamburger.offsetParent !== null && this.isMenuOpen) {
+                    this.closeMenu();
                 }
             });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (this.isMenuOpen && 
+                !this.navMenu.contains(e.target) && 
+                !this.hamburger.contains(e.target)) {
+                this.closeMenu();
+            }
+        });
+    }
+    
+    toggleMenu() {
+        this.isMenuOpen = !this.isMenuOpen;
+        this.hamburger.classList.toggle('active', this.isMenuOpen);
+        this.navMenu.classList.toggle('active', this.isMenuOpen);
+        this.hamburger.setAttribute('aria-expanded', this.isMenuOpen.toString());
+        this.navMenu.setAttribute('aria-hidden', (!this.isMenuOpen).toString());
+        
+        if (this.isMenuOpen) {
+            const firstLink = this.navMenu.querySelector('.nav-link');
+            if (firstLink) {
+                setTimeout(() => firstLink.focus(), 100);
+            }
+        }
+    }
+    
+    closeMenu() {
+        this.isMenuOpen = false;
+        this.hamburger.classList.remove('active');
+        this.navMenu.classList.remove('active');
+        this.hamburger.setAttribute('aria-expanded', 'false');
+        this.navMenu.setAttribute('aria-hidden', 'true');
+    }
+    
+    setupKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isMenuOpen) {
+                this.closeMenu();
+                this.hamburger.focus();
+            }
+        });
+        
+        this.navMenu.addEventListener('keydown', (e) => {
+            if (!this.isMenuOpen) return;
+            
+            const focusableElements = this.navMenu.querySelectorAll('.nav-link');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.key === 'Tab') {
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
         });
     }
 
