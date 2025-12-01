@@ -15,6 +15,14 @@ import { BackToTopModule } from './modules/back-to-top.js';
 import { CommandPaletteModule } from './modules/command-palette.js';
 import { CartoonAssistantModule } from './modules/cartoon-assistant.js';
 import { LoadAnimationsModule } from './modules/load-animations.js';
+import { SearchModule } from './modules/search.js';
+import { ReadingProgressModule } from './modules/reading-progress.js';
+import { KeyboardShortcutsModule } from './modules/keyboard-shortcuts.js';
+import { LanguageSwitcherModule } from './modules/language-switcher.js';
+import { LazyLoadingModule } from './modules/lazy-loading.js';
+import { AnalyticsModule } from './modules/analytics.js';
+import { GitHubWidgetModule } from './modules/github-widget.js';
+import { ContactFormModule } from './modules/contact-form.js';
 
 /**
  * Application Registry
@@ -35,7 +43,6 @@ class AppRegistry {
     }
 
     initAll() {
-        // Initialize all registered modules
         this.modules.forEach((module, name) => {
             try {
                 console.log(`Initializing module: ${name}`);
@@ -59,7 +66,7 @@ class PortfolioApp {
      * Initialize all modules
      */
     init() {
-        // Register and initialize all modules
+        // Core modules
         this.modules.particleAnimation = this.registry.register(
             'particleAnimation',
             new ParticleAnimation()
@@ -123,6 +130,47 @@ class PortfolioApp {
         this.modules.skills = this.registry.register(
             'skills',
             new SkillsModule()
+        );
+
+        // New enhanced modules
+        this.modules.search = this.registry.register(
+            'search',
+            new SearchModule()
+        );
+
+        this.modules.readingProgress = this.registry.register(
+            'readingProgress',
+            new ReadingProgressModule()
+        );
+
+        this.modules.keyboardShortcuts = this.registry.register(
+            'keyboardShortcuts',
+            new KeyboardShortcutsModule()
+        );
+
+        this.modules.languageSwitcher = this.registry.register(
+            'languageSwitcher',
+            new LanguageSwitcherModule()
+        );
+
+        this.modules.lazyLoading = this.registry.register(
+            'lazyLoading',
+            new LazyLoadingModule()
+        );
+
+        this.modules.analytics = this.registry.register(
+            'analytics',
+            new AnalyticsModule()
+        );
+
+        this.modules.githubWidget = this.registry.register(
+            'githubWidget',
+            new GitHubWidgetModule('kajal1322705')
+        );
+
+        this.modules.contactForm = this.registry.register(
+            'contactForm',
+            new ContactFormModule()
         );
 
         console.log('Portfolio App initialized successfully');
