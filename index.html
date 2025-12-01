@@ -1,723 +1,886 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="midnight">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aditya Choudhry - Full Stack & AI Software Engineer specializing in TypeScript, Java Spring Boot, React, and AI/ML. Based in India with expertise in building scalable web applications and microservices.">
-    <meta name="keywords" content="Aditya Choudhry, Full Stack Developer, AI Engineer, Software Engineer, TypeScript, Java, React, Angular, Spring Boot, Web Developer, India">
-    <meta name="author" content="Aditya Choudhry">
-    <meta name="robots" content="index, follow">
+    <title>Aditya Choudhry | Full Stack Developer</title>
+    <meta name="description" content="Full Stack Developer specializing in modern web technologies. View my portfolio of projects and get in touch.">
     
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Aditya Choudhry - Full Stack Developer">
+    <meta property="og:description" content="Passionate developer creating modern web experiences">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://adityachoudhry.dev/">
-    <meta property="og:title" content="Aditya Choudhry - Full Stack & AI Software Engineer">
-    <meta property="og:description" content="Full Stack & AI Software Engineer specializing in building robust, secure, and innovative digital solutions.">
-    <meta property="og:image" content="https://adityachoudhry.dev/og-image.png">
     
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Aditya Choudhry - Full Stack & AI Software Engineer">
-    <meta name="twitter:description" content="Full Stack & AI Software Engineer specializing in building robust, secure, and innovative digital solutions.">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Aditya Choudhry",
-        "jobTitle": "Full Stack & AI Software Engineer",
-        "url": "https://adityachoudhry.dev",
-        "sameAs": [
-            "https://github.com/kajal1322705",
-            "https://www.linkedin.com/in/aditya-choudhry/"
-        ],
-        "knowsAbout": ["TypeScript", "Java", "React", "Angular", "Spring Boot", "AI/ML", "Microservices"],
-        "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "Maharishi Markandeshwar University"
-        }
-    }
-    </script>
-    
-    <title>Aditya Choudhry - Full Stack & AI Software Engineer | Portfolio</title>
-    <link rel="canonical" href="https://adityachoudhry.dev/">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
-<body class="loading">
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="preloader-logo">AC</div>
-        <div class="preloader-spinner"></div>
-    </div>
-
-    <!-- Reading Progress Bar -->
-    <div class="reading-progress-bar">
-        <div class="reading-progress-fill"></div>
-    </div>
-
-    <!-- Particle Background Canvas -->
-    <canvas id="particleCanvas"></canvas>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">AC</a>
-            <div class="nav-right">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <span class="loader-text">AC</span>
+        </div>
+    </div>
+
+    <!-- Theme Switcher Panel -->
+    <div class="theme-panel" id="themePanel">
+        <button class="theme-panel-toggle" id="themePanelToggle" aria-label="Toggle theme panel">
+            <i class="fas fa-palette"></i>
+        </button>
+        <div class="theme-panel-content">
+            <h3>Choose Theme</h3>
+            <div class="theme-options">
+                <button class="theme-option active" data-theme="midnight" aria-label="Midnight theme">
+                    <span class="theme-preview midnight"></span>
+                    <span class="theme-name">Midnight</span>
                 </button>
-                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="theme-option" data-theme="ocean" aria-label="Ocean theme">
+                    <span class="theme-preview ocean"></span>
+                    <span class="theme-name">Ocean</span>
+                </button>
+                <button class="theme-option" data-theme="forest" aria-label="Forest theme">
+                    <span class="theme-preview forest"></span>
+                    <span class="theme-name">Forest</span>
+                </button>
+                <button class="theme-option" data-theme="sunset" aria-label="Sunset theme">
+                    <span class="theme-preview sunset"></span>
+                    <span class="theme-name">Sunset</span>
+                </button>
+                <button class="theme-option" data-theme="neon" aria-label="Neon theme">
+                    <span class="theme-preview neon"></span>
+                    <span class="theme-name">Neon</span>
                 </button>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
-                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
-                <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a></li>
-                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
-                <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
-                <li><a href="#education" class="nav-link" data-i18n="nav.education">Education</a></li>
-                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
-                <li><a href="blog.html" class="nav-link" data-i18n="nav.articles">Articles</a></li>
-            </ul>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-text">AC</span>
+                <span class="logo-dot"></span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <span class="nav-link-text">Home</span>
+                    <span class="nav-link-indicator"></span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <span class="nav-link-text">About</span>
+                    <span class="nav-link-indicator"></span>
+                </a>
+                <a href="#skills" class="nav-link" data-section="skills">
+                    <span class="nav-link-text">Skills</span>
+                    <span class="nav-link-indicator"></span>
+                </a>
+                <a href="#projects" class="nav-link" data-section="projects">
+                    <span class="nav-link-text">Projects</span>
+                    <span class="nav-link-indicator"></span>
+                </a>
+                <a href="#experience" class="nav-link" data-section="experience">
+                    <span class="nav-link-text">Experience</span>
+                    <span class="nav-link-indicator"></span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <span class="nav-link-text">Contact</span>
+                    <span class="nav-link-indicator"></span>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="nav-btn search-btn" id="searchBtn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="#contact" class="nav-cta">
+                    <span>Hire Me</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </nav>
 
-    <main>
-        <!-- Side Stepper Navigation -->
-        <div class="stepper-nav">
-            <ul>
-                <li><a href="#home" data-section="home" class="stepper-dot active" aria-label="Go to Home"><span>Home</span></a></li>
-                <li><a href="#about" data-section="about" class="stepper-dot" aria-label="Go to About"><span>About</span></a></li>
-                <li><a href="#experience" data-section="experience" class="stepper-dot" aria-label="Go to Experience"><span>Experience</span></a></li>
-                <li><a href="#projects" data-section="projects" class="stepper-dot" aria-label="Go to Projects"><span>Projects</span></a></li>
-                <li><a href="#skills" data-section="skills" class="stepper-dot" aria-label="Go to Skills"><span>Skills</span></a></li>
-                <li><a href="#github" data-section="github" class="stepper-dot" aria-label="Go to GitHub"><span>GitHub</span></a></li>
-                <li><a href="#education" data-section="education" class="stepper-dot" aria-label="Go to Education"><span>Education</span></a></li>
-                <li><a href="#contact" data-section="contact" class="stepper-dot" aria-label="Go to Contact"><span>Contact</span></a></li>
-            </ul>
-        </div>
-
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span data-i18n="hero.greeting">Hi, I'm</span> <span class="gradient-text rainbow-text">Aditya Choudhry</span>
-                </h1>
-                <p class="hero-subtitle">
-                    <span id="typed-text"></span>
-                    <span class="cursor">|</span>
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary neon-glow" data-i18n="hero.viewProjects">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary" data-i18n="hero.getInTouch">Get in Touch</a>
-                    <a href="Aditya_Choudhry_Resume.pdf" download class="btn btn-accent resume-download-btn">
-                        <i class="fas fa-download"></i> <span data-i18n="hero.downloadResume">Download Resume</span>
-                    </a>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <span class="mobile-logo">AC</span>
+                <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-nav-links">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#skills" class="mobile-nav-link">Skills</a>
+                <a href="#projects" class="mobile-nav-link">Projects</a>
+                <a href="#experience" class="mobile-nav-link">Experience</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </div>
+            <div class="mobile-menu-footer">
+                <div class="mobile-social">
+                    <a href="https://github.com/kajal1322705" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:aditya@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
-                <div class="scroll-indicator">
-                    <div class="mouse">
-                        <div class="wheel"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <canvas class="hero-particles" id="heroParticles"></canvas>
+            <div class="hero-grid"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Available for work</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="hero-greeting">Hello, I'm</span>
+                <span class="hero-name">Aditya Choudhry</span>
+            </h1>
+            
+            <div class="hero-role">
+                <span class="role-prefix">I'm a</span>
+                <span class="role-text" id="typingText"></span>
+                <span class="typing-cursor">|</span>
+            </div>
+            
+            <p class="hero-description">
+                Crafting exceptional digital experiences with clean code and creative design. 
+                Specialized in building modern, responsive, and user-friendly web applications.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span>Get In Touch</span>
+                </a>
+                <a href="#" class="btn btn-ghost" id="downloadCV">
+                    <i class="fas fa-download"></i>
+                    <span>Resume</span>
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50">0</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="3">0</span>
+                    <span class="stat-label">Years Exp</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="20">0</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <div class="scroll-indicator">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+        
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Introduction</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image-wrapper">
+                    <div class="about-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="image-decoration"></div>
                     </div>
-                    <p data-i18n="hero.scrollDown">Scroll Down</p>
+                    <div class="about-badges">
+                        <div class="badge-card">
+                            <i class="fas fa-code"></i>
+                            <span>Clean Code</span>
+                        </div>
+                        <div class="badge-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Creative</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h3>Full Stack Developer & UI/UX Enthusiast</h3>
+                    <p>
+                        I'm a passionate developer currently pursuing my MCA at MMU University Mullana. 
+                        With a strong foundation in both frontend and backend technologies, I love creating 
+                        seamless user experiences that combine aesthetics with functionality.
+                    </p>
+                    <p>
+                        My journey in tech started with curiosity and has evolved into a deep commitment 
+                        to building impactful solutions. I thrive on challenges and continuously seek to 
+                        expand my skill set.
+                    </p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Problem Solver</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Team Player</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Quick Learner</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Detail Oriented</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="aboutMoreBtn">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Expertise</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="skills-tabs">
+                <button class="skill-tab active" data-category="all">All</button>
+                <button class="skill-tab" data-category="frontend">Frontend</button>
+                <button class="skill-tab" data-category="backend">Backend</button>
+                <button class="skill-tab" data-category="tools">Tools</button>
+            </div>
+            
+            <div class="skills-grid" id="skillsGrid">
+                <!-- Frontend -->
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <span class="skill-name">HTML5</span>
+                    <div class="skill-level" data-level="95"></div>
+                </div>
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                    <span class="skill-name">CSS3</span>
+                    <div class="skill-level" data-level="90"></div>
+                </div>
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-icon"><i class="fab fa-js"></i></div>
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-level" data-level="88"></div>
+                </div>
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <span class="skill-name">React</span>
+                    <div class="skill-level" data-level="85"></div>
+                </div>
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-icon"><i class="fab fa-vuejs"></i></div>
+                    <span class="skill-name">Vue.js</span>
+                    <div class="skill-level" data-level="75"></div>
+                </div>
+                <div class="skill-card" data-category="frontend">
+                    <div class="skill-icon"><i class="fab fa-sass"></i></div>
+                    <span class="skill-name">Sass</span>
+                    <div class="skill-level" data-level="85"></div>
+                </div>
+                
+                <!-- Backend -->
+                <div class="skill-card" data-category="backend">
+                    <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                    <span class="skill-name">Node.js</span>
+                    <div class="skill-level" data-level="82"></div>
+                </div>
+                <div class="skill-card" data-category="backend">
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <span class="skill-name">Python</span>
+                    <div class="skill-level" data-level="80"></div>
+                </div>
+                <div class="skill-card" data-category="backend">
+                    <div class="skill-icon"><i class="fab fa-java"></i></div>
+                    <span class="skill-name">Java</span>
+                    <div class="skill-level" data-level="75"></div>
+                </div>
+                <div class="skill-card" data-category="backend">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <span class="skill-name">MongoDB</span>
+                    <div class="skill-level" data-level="78"></div>
+                </div>
+                <div class="skill-card" data-category="backend">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <span class="skill-name">PostgreSQL</span>
+                    <div class="skill-level" data-level="75"></div>
+                </div>
+                <div class="skill-card" data-category="backend">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <span class="skill-name">Express.js</span>
+                    <div class="skill-level" data-level="80"></div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                    <span class="skill-name">Git</span>
+                    <div class="skill-level" data-level="88"></div>
+                </div>
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-icon"><i class="fab fa-docker"></i></div>
+                    <span class="skill-name">Docker</span>
+                    <div class="skill-level" data-level="70"></div>
+                </div>
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-icon"><i class="fab fa-figma"></i></div>
+                    <span class="skill-name">Figma</span>
+                    <div class="skill-level" data-level="75"></div>
+                </div>
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-icon"><i class="fab fa-aws"></i></div>
+                    <span class="skill-name">AWS</span>
+                    <div class="skill-level" data-level="65"></div>
+                </div>
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-icon"><i class="fas fa-terminal"></i></div>
+                    <span class="skill-name">Linux</span>
+                    <div class="skill-level" data-level="78"></div>
+                </div>
+                <div class="skill-card" data-category="tools">
+                    <div class="skill-icon"><i class="fab fa-npm"></i></div>
+                    <span class="skill-name">npm/yarn</span>
+                    <div class="skill-level" data-level="85"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+            
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card" data-category="web" data-project="codeCompanion">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-view-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                        </div>
+                        <h3 class="project-title">CodeCompanion</h3>
+                        <p class="project-description">AI-powered coding assistant for developers</p>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web" data-project="medicalDashboard">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-view-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">React</span>
+                        </div>
+                        <h3 class="project-title">Medical Dashboard</h3>
+                        <p class="project-description">Healthcare analytics platform</p>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web" data-project="cryptoIntelligence">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-view-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">Chart.js</span>
+                        </div>
+                        <h3 class="project-title">Crypto Intelligence</h3>
+                        <p class="project-description">Real-time crypto market analysis</p>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web" data-project="chessRealm">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-view-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Canvas</span>
+                        </div>
+                        <h3 class="project-title">Chess Realm</h3>
+                        <p class="project-description">Interactive multiplayer chess game</p>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="design" data-project="webScanner">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-view-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Security</span>
+                            <span class="project-tag">Node.js</span>
+                        </div>
+                        <h3 class="project-title">Web Security Scanner</h3>
+                        <p class="project-description">Vulnerability detection tool</p>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="mobile" data-project="apiHub">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-view-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">API</span>
+                            <span class="project-tag">REST</span>
+                        </div>
+                        <h3 class="project-title">API Hub Connect</h3>
+                        <p class="project-description">API management platform</p>
+                    </div>
                 </div>
             </div>
             
-            <!-- Floating colorful orbs -->
-            <div class="floating-orbs">
-                <div class="orb orb-1"></div>
-                <div class="orb orb-2"></div>
-                <div class="orb orb-3"></div>
+            <div class="projects-more">
+                <button class="btn btn-secondary" id="loadMoreProjects">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="about.title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="lead colorful-lead" data-i18n="about.role">Full Stack & AI Software Engineer</p>
-                        <p>I'm a hands-on Full Stack & AI Software Engineer specializing in creating robust, secure, and innovative digital solutions. With hands-on experience building AI-driven clinical platforms and modern web apps, I merge deep technical expertise—including quantum-resistant cryptography, TypeScript, Node.js, and advanced AI/Blockchain integration—with a relentless drive to innovate.</p>
-                        
-                        <h3 class="achievements-title" data-i18n="about.achievements">Key Achievements:</h3>
-                        <ul class="achievements-list colorful-list">
-                            <li><i class="fas fa-check-circle"></i> Developed <strong>ClinicalAiAssistant</strong>, a predictive diagnostic tool that integrates deep learning and next-gen security measures</li>
-                            <li><i class="fas fa-check-circle"></i> Built user-centric interfaces and scalable back-end systems powering projects like <strong>PerplexityClone</strong> and <strong>WordWizardChallenge</strong></li>
-                            <li><i class="fas fa-check-circle"></i> Engineered data pipelines and real-time dashboards that enhance decision-making and cybersecurity</li>
-                            <li><i class="fas fa-check-circle"></i> Engineered Spring Boot microservices supporting over <strong>200K concurrent users</strong>, achieving 99.9% uptime</li>
-                        </ul>
-                        
-                        <a href="blog.html" class="btn btn-secondary" style="margin-top: 1.5rem;" data-i18n="about.readArticles">Read My Articles</a>
-
-                        <p class="closing-statement">I thrive in fast-paced, challenging environments where I can apply my technical skills to solve real-world problems. If you're looking for someone who combines deep industry expertise with a results-driven approach, let's connect.</p>
-                        
-                        <div class="social-links">
-                            <a href="https://github.com/kajal1322705" target="_blank" class="social-link github-hover" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" class="social-link linkedin-hover" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="about-image">
-                        <div class="image-placeholder colorful-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                    </div>
-                </div>
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Journey</span>
+                <h2 class="section-title">Experience & Education</h2>
+                <div class="section-line"></div>
             </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="experience">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="experience.title">Work Experience</h2>
-                <div class="timeline colorful-timeline">
+            
+            <div class="experience-tabs">
+                <button class="exp-tab active" data-tab="work">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Work</span>
+                </button>
+                <button class="exp-tab" data-tab="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </button>
+                <button class="exp-tab" data-tab="certifications">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certifications</span>
+                </button>
+            </div>
+            
+            <div class="experience-content">
+                <!-- Work Timeline -->
+                <div class="timeline" id="workTimeline">
                     <div class="timeline-item">
-                        <div class="timeline-dot pulse-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <h3>Full Stack Engineer</h3>
-                                <span class="company"><i class="fas fa-building"></i> Hawk Sense Business Solutions Pvt Ltd</span>
-                                <span class="duration"><i class="far fa-calendar"></i> Sep 2024 - Present · 1 yr 3 mos</span>
-                                <span class="location"><i class="fas fa-map-marker-alt"></i> Hybrid, India</span>
-                            </div>
-                            <ul class="timeline-description">
-                                <li>Developed RESTful APIs using Java Spring Boot for enterprise applications</li>
-                                <li>Built responsive front-end modules using Angular 15</li>
-                                <li>Migrated legacy SOAP services to microservices architecture</li>
-                                <li>Implemented Spring Security with JWT for secure authentication</li>
-                                <li>Optimized database queries in PostgreSQL and MongoDB</li>
-                                <li>Managed CI/CD pipelines using Azure DevOps and Docker</li>
-                                <li>Deployed applications to Kubernetes clusters</li>
-                                <li>Wrote automated test scripts using Selenium and Postman</li>
-                                <li>Participated in Agile sprints, reviews, and planning</li>
-                                <li>Mentored junior developers and conducted code reviews</li>
-                            </ul>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023 - Present</span>
+                            <h3>Full Stack Developer</h3>
+                            <h4>Freelance</h4>
+                            <p>Building custom web applications and solutions for clients worldwide. Specializing in React, Node.js, and cloud technologies.</p>
                         </div>
                     </div>
-
                     <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <div class="timeline-header">
-                                <h3>Full Stack Engineer</h3>
-                                <span class="company"><i class="fas fa-briefcase"></i> Edu Startup · Self-employed</span>
-                                <span class="duration"><i class="far fa-calendar"></i> Nov 2019 - Dec 2024 · 5 yrs 2 mos</span>
-                                <span class="location"><i class="fas fa-map-marker-alt"></i> Delhi, India · Hybrid</span>
-                            </div>
-                            <ul class="timeline-description">
-                                <li>Engineered Spring Boot microservices supporting over 200K concurrent users, achieving 99.9% uptime</li>
-                                <li>Integrated secure JWT-based authentication for seamless mobile and web platform access</li>
-                                <li>Automated Docker-based CI/CD pipelines with Jenkins and GitHub Actions, enhancing deployment efficiency</li>
-                                <li>Mentored junior developers, contributing to code reviews and architectural decisions to foster team growth</li>
-                            </ul>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2022 - 2023</span>
+                            <h3>Web Developer Intern</h3>
+                            <h4>Tech Company</h4>
+                            <p>Developed and maintained frontend components using React. Collaborated with senior developers on client projects.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="projects.title">Featured Projects</h2>
-                <div class="filter-buttons colorful-filters">
-                    <button class="filter-btn active" data-filter="all" data-i18n="projects.all">All</button>
-                    <button class="filter-btn" data-filter="typescript">TypeScript</button>
-                    <button class="filter-btn" data-filter="html">HTML</button>
-                    <button class="filter-btn" data-filter="javascript">JavaScript</button>
-                    <button class="filter-btn" data-filter="java">Java</button>
-                </div>
-                <div class="projects-grid">
-                    <div class="project-card glass-card" data-category="html">
-                        <div class="project-icon gradient-icon"><i class="fas fa-code"></i></div>
-                        <h3>CodeCompanion</h3>
-                        <p>An intelligent code companion tool to assist developers with coding tasks and problem-solving.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge html-badge">HTML</span>
-                            <span class="tech-badge css-badge">CSS</span>
-                            <span class="tech-badge js-badge">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/CodeCompanion" target="_blank" class="project-link" data-i18n="projects.viewCode">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-pink"><i class="fas fa-hospital"></i></div>
-                        <h3>MedicalDashboard</h3>
-                        <p>A comprehensive medical dashboard for healthcare professionals to manage patient data and analytics.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge react-badge">React</span>
-                            <span class="tech-badge">Dashboard</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/MedicalDashboard" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-green"><i class="fas fa-shield-alt"></i></div>
-                        <h3>WebSecurityScanner</h3>
-                        <p>Advanced web security scanner to detect vulnerabilities and ensure application safety.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">Security</span>
-                            <span class="tech-badge">Scanning</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/WebSecurityScanner" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-orange"><i class="fas fa-bitcoin"></i></div>
-                        <h3>CryptoIntelligence</h3>
-                        <p>Cryptocurrency intelligence platform for tracking market trends and analyzing blockchain data.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">Crypto</span>
-                            <span class="tech-badge">Analytics</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/CryptoIntelligence" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-purple"><i class="fas fa-chess"></i></div>
-                        <h3>ChessRealm</h3>
-                        <p>Interactive online chess platform with real-time gameplay and advanced features.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">WebSockets</span>
-                            <span class="tech-badge">Game Dev</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/ChessRealm" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-cyan"><i class="fas fa-users"></i></div>
-                        <h3>We-r-awesome</h3>
-                        <p>Collaborative platform built with modern web technologies.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">Collaboration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/We-r-awesome" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon"><i class="fas fa-plug"></i></div>
-                        <h3>ApiHubConnect</h3>
-                        <p>Centralized API hub for connecting and managing multiple API integrations.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">API</span>
-                            <span class="tech-badge">Integration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/ApiHubConnect" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-pink"><i class="fas fa-project-diagram"></i></div>
-                        <h3>Demo Project</h3>
-                        <p>Demonstration project showcasing various TypeScript features and best practices.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">Demo</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/demo" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="javascript">
-                        <div class="project-icon gradient-icon-green"><i class="fas fa-atom"></i></div>
-                        <h3>Quirk</h3>
-                        <p>Quantum circuit simulator - A drag-and-drop tool for exploring quantum circuits in the browser.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge js-badge">JavaScript</span>
-                            <span class="tech-badge">Quantum</span>
-                            <span class="tech-badge">Simulation</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/Quirk" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-orange"><i class="fas fa-cube"></i></div>
-                        <h3>Material Web</h3>
-                        <p>Material Design Web Components for building modern, accessible web applications.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">Material UI</span>
-                            <span class="tech-badge">Components</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/material-web" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="typescript">
-                        <div class="project-icon gradient-icon-purple"><i class="fas fa-laptop-code"></i></div>
-                        <h3>VS Code</h3>
-                        <p>Contribution to Visual Studio Code - the popular code editor used by millions of developers.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge ts-badge">TypeScript</span>
-                            <span class="tech-badge">Electron</span>
-                            <span class="tech-badge">IDE</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/vscode" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-card" data-category="java">
-                        <div class="project-icon gradient-icon-cyan"><i class="fas fa-layer-group"></i></div>
-                        <h3>PrimeFaces Component Suite</h3>
-                        <p>Ultimate Component Suite for Jakarta Faces - rich UI components for enterprise applications.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge java-badge">Java</span>
-                            <span class="tech-badge">JSF</span>
-                            <span class="tech-badge">UI Components</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kajal1322705/primefaces" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="skills.title">Skills & Technologies</h2>
-                <div class="skills-grid">
-                    <div class="skill-category glass-card skill-frontend">
-                        <h3><i class="fas fa-laptop-code"></i> <span data-i18n="skills.frontend">Frontend Development</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">Angular 15</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Vue</span>
-                            <span class="skill-tag">Svelte</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-backend">
-                        <h3><i class="fas fa-server"></i> <span data-i18n="skills.backend">Backend Development</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">Java Spring Boot</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">RESTful APIs</span>
-                            <span class="skill-tag">Microservices</span>
-                            <span class="skill-tag">JWT</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-devops">
-                        <h3><i class="fas fa-cloud"></i> <span data-i18n="skills.devops">DevOps & Cloud</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Kubernetes</span>
-                            <span class="skill-tag">Azure DevOps</span>
-                            <span class="skill-tag">Jenkins</span>
-                            <span class="skill-tag">GitHub Actions</span>
-                            <span class="skill-tag">CI/CD</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-languages">
-                        <h3><i class="fas fa-code"></i> <span data-i18n="skills.languages">Programming Languages</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">C++</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-testing">
-                        <h3><i class="fas fa-shield-alt"></i> <span data-i18n="skills.testing">Testing & Security</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">Selenium</span>
-                            <span class="skill-tag">Postman</span>
-                            <span class="skill-tag">Spring Security</span>
-                            <span class="skill-tag">Web Security</span>
-                            <span class="skill-tag">Cryptography</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-specializations">
-                        <h3><i class="fas fa-brain"></i> <span data-i18n="skills.specializations">Specializations</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">AI/ML</span>
-                            <span class="skill-tag">Deep Learning</span>
-                            <span class="skill-tag">Blockchain</span>
-                            <span class="skill-tag">Cryptocurrency</span>
-                            <span class="skill-tag">Quantum Computing</span>
-                            <span class="skill-tag">Medical Tech</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-services">
-                        <h3><i class="fas fa-cogs"></i> <span data-i18n="skills.services">Services Offered</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">SaaS Development</span>
-                            <span class="skill-tag">Web Development</span>
-                            <span class="skill-tag">iOS Development</span>
-                            <span class="skill-tag">Information Security</span>
-                            <span class="skill-tag">Database Development</span>
-                            <span class="skill-tag">Custom Software</span>
-                            <span class="skill-tag">Cloud Management</span>
-                            <span class="skill-tag">Cybersecurity</span>
-                        </div>
-                    </div>
-                    <div class="skill-category glass-card skill-practices">
-                        <h3><i class="fas fa-tools"></i> <span data-i18n="skills.practices">Development Practices</span></h3>
-                        <div class="skill-items">
-                            <span class="skill-tag">Agile/Scrum</span>
-                            <span class="skill-tag">Code Review</span>
-                            <span class="skill-tag">Mentoring</span>
-                            <span class="skill-tag">System Architecture</span>
-                            <span class="skill-tag">Data Pipelines</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GitHub Activity Section -->
-        <section id="github" class="github-section">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="github.title">GitHub Activity</h2>
-                <div id="githubWidget" class="github-widget glass-card"></div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="education">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="education.title">Education & Certifications</h2>
                 
-                <div class="education-grid">
-                    <div class="education-card glass-card">
-                        <div class="edu-icon gradient-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3>Master of Computer Applications (MCA)</h3>
-                        <h4>Maharishi Markandeshwar (Deemed to be University)</h4>
-                        <p class="edu-duration">Sep 2022 - Jul 2024</p>
-                        <p class="edu-grade">Grade: 8.5 / 10</p>
-                        <p class="edu-specialization">Computer Science</p>
-                        <div class="edu-activities">
-                            <p><strong>Activities & Achievements:</strong></p>
-                            <ul>
-                                <li>Hands-on Workshop on Data Analytics and Visualization</li>
-                                <li>Hands-on Workshop on Web Technologies</li>
-                                <li>4-Day Workshop on Dynamic Web Development and DNS Mastery</li>
-                                <li>Multiple AI Hackathons by Lablab.ai</li>
-                            </ul>
+                <!-- Education Timeline -->
+                <div class="timeline hidden" id="educationTimeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023 - 2025</span>
+                            <h3>Master of Computer Applications (MCA)</h3>
+                            <h4>MMU University Mullana</h4>
+                            <p>Specializing in advanced software development and system design.</p>
                         </div>
                     </div>
-
-                    <div class="education-card glass-card">
-                        <div class="edu-icon gradient-icon-pink"><i class="fas fa-university"></i></div>
-                        <h3>Bachelor of Technology (BTech)</h3>
-                        <h4>DIT University</h4>
-                        <p class="edu-duration">Aug 2015 - Jul 2019</p>
-                        <p class="edu-grade">Grade: 5.7 / 10</p>
-                        <p class="edu-specialization">Civil Engineering</p>
-                        <div class="edu-activities">
-                            <p><strong>Activities & Achievements:</strong></p>
-                            <ul>
-                                <li>Bridge Design Competition</li>
-                                <li>Workshops on AutoCAD, Revit, and STAAD.Pro</li>
-                                <li>Seminars on sustainable construction and smart cities</li>
-                                <li>Participated in civil engineering expos and technology fairs</li>
-                            </ul>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2020 - 2023</span>
+                            <h3>Bachelor of Technology (B.Tech)</h3>
+                            <h4>Computer Science</h4>
+                            <p>Foundation in programming, algorithms, and software engineering principles.</p>
                         </div>
                     </div>
                 </div>
-
-                <h3 class="certifications-subtitle" data-i18n="education.certifications">Professional Certifications</h3>
-                <div class="certifications-grid" id="certifications">
-                    <div class="certification-card glass-card cert-freecodecamp">
-                        <div class="cert-icon"><i class="fab fa-free-code-camp"></i></div>
-                        <div class="cert-badge-wrapper">
-                            <img src="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png" alt="freeCodeCamp" class="cert-logo" loading="lazy">
+                
+                <!-- Certifications Grid -->
+                <div class="certifications-grid hidden" id="certificationsGrid">
+                    <div class="cert-card" data-cert="freecodecamp">
+                        <div class="cert-icon">
+                            <i class="fab fa-free-code-camp"></i>
                         </div>
-                        <h4>Responsive Web Design</h4>
-                        <p class="cert-issuer">freeCodeCamp</p>
-                        <p class="cert-date">Issued: Jan 2024</p>
-                        <a href="https://www.freecodecamp.org/certification/fcc132a3a91-203f-46c9-9952-5e2cc7d37638/responsive-web-design" class="cert-link" target="_blank" aria-label="View Responsive Web Design certification from freeCodeCamp" data-i18n="education.viewCredential">
-                            <i class="fas fa-external-link-alt"></i> View Credential
-                        </a>
+                        <div class="cert-info">
+                            <h3>Responsive Web Design</h3>
+                            <p>freeCodeCamp</p>
+                        </div>
+                        <button class="cert-view-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
                     </div>
-
-                    <div class="certification-card glass-card cert-hackerrank">
-                        <div class="cert-icon"><i class="fab fa-hackerrank"></i></div>
-                        <div class="cert-badge-wrapper">
-                            <img src="https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg" alt="HackerRank" class="cert-logo" loading="lazy">
+                    <div class="cert-card" data-cert="hackerrank">
+                        <div class="cert-icon">
+                            <i class="fab fa-hackerrank"></i>
                         </div>
-                        <h4>Software Engineer Certificate</h4>
-                        <p class="cert-issuer">HackerRank</p>
-                        <p class="cert-date">Issued: June 2025</p>
-                        <a href="https://www.hackerrank.com/certificates/iframe/ca0f3ab79b8e" class="cert-link" target="_blank" aria-label="View Software Engineer Certificate from HackerRank">
-                            <i class="fas fa-external-link-alt"></i> View Credential
-                        </a>
+                        <div class="cert-info">
+                            <h3>Software Engineer Certificate</h3>
+                            <p>HackerRank</p>
+                        </div>
+                        <button class="cert-view-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
                     </div>
-
-                    <div class="certification-card glass-card cert-skillsoft">
-                        <div class="cert-icon"><i class="fas fa-award"></i></div>
-                        <div class="cert-badge-wrapper">
-                            <img src="https://www.skillsoft.com/wp-content/uploads/2021/03/skillsoft-logo-white.svg" alt="Skillsoft" class="cert-logo" loading="lazy">
+                    <div class="cert-card" data-cert="skillsoft">
+                        <div class="cert-icon">
+                            <i class="fas fa-award"></i>
                         </div>
-                        <h4>Digital Badge</h4>
-                        <p class="cert-issuer">Skillsoft</p>
-                        <p class="cert-date">Verified Credential</p>
-                        <a href="https://skillsoft.digitalbadges.skillsoft.com/1504c44a-aa0c-4b8e-91ce-ebd50a9f883a" class="cert-link" target="_blank" aria-label="View Skillsoft Digital Badge">
-                            <i class="fas fa-external-link-alt"></i> View Credential
-                        </a>
+                        <div class="cert-info">
+                            <h3>Professional Badge</h3>
+                            <p>Skillsoft</p>
+                        </div>
+                        <button class="cert-view-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title gradient-underline" data-i18n="contact.title">Get In Touch</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <p class="contact-description" data-i18n="contact.description">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
-                        
-                        <!-- Contact Form -->
-                        <form id="contactForm" class="contact-form glass-card">
-                            <div class="form-group">
-                                <label for="name"><i class="fas fa-user"></i></label>
-                                <input type="text" id="name" name="name" placeholder="Your Name" data-i18n="contact.name" required>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Let's Work Together</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-text">
+                        <h3>Have a project in mind?</h3>
+                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    </div>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:aditya@example.com" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="form-group">
-                                <label for="email"><i class="fas fa-envelope"></i></label>
-                                <input type="email" id="email" name="email" placeholder="Your Email" data-i18n="contact.email" required>
+                            <div class="method-info">
+                                <span class="method-label">Email</span>
+                                <span class="method-value">aditya@example.com</span>
                             </div>
-                            <div class="form-group">
-                                <label for="message"><i class="fas fa-comment"></i></label>
-                                <textarea id="message" name="message" placeholder="Your Message" data-i18n="contact.message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary neon-glow" data-i18n="contact.send">
-                                <i class="fas fa-paper-plane"></i> Send Message
-                            </button>
-                        </form>
-
-                        <div class="contact-methods">
-                            <a href="https://github.com/kajal1322705" target="_blank" class="contact-method glass-card github-gradient">
-                                <i class="fab fa-github"></i>
-                                <div>
-                                    <h4>GitHub</h4>
-                                    <p>@kajal1322705</p>
-                                </div>
-                            </a>
-                            <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" class="contact-method glass-card linkedin-gradient">
+                        </a>
+                        <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" class="contact-method">
+                            <div class="method-icon">
                                 <i class="fab fa-linkedin"></i>
-                                <div>
-                                    <h4>LinkedIn</h4>
-                                    <p>Aditya Choudhry</p>
-                                </div>
-                            </a>
+                            </div>
+                            <div class="method-info">
+                                <span class="method-label">LinkedIn</span>
+                                <span class="method-value">aditya-choudhry</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/kajal1322705" target="_blank" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="method-info">
+                                <span class="method-label">GitHub</span>
+                                <span class="method-value">kajal1322705</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                                <span class="form-highlight"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                                <span class="form-highlight"></span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project discussion" required>
+                            <span class="form-highlight"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            <span class="form-highlight"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer colorful-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">AC</div>
-                    <p>&copy; 2025 Aditya Choudhry. <span data-i18n="footer.rights">All rights reserved.</span></p>
-                    <p data-i18n="footer.built">Built with HTML, CSS, and JavaScript</p>
-                    <div class="footer-social">
-                        <a href="https://github.com/kajal1322705" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </main>
-
-    <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top neon-glow" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
-
-    <!-- Cartoon Assistant -->
-    <div class="cartoon-assistant" id="cartoonAssistant">
-        <div class="speech-bubble" id="speechBubble"></div>
-        <div class="character-body rainbow-border">
-            <i class="fas fa-robot"></i>
         </div>
-    </div>
+    </section>
 
-    <!-- Command Palette -->
-    <div class="command-palette-overlay" id="commandPaletteOverlay">
-        <div class="command-palette glass-card" id="commandPalette">
-            <div class="command-palette-header">
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">AC</span>
+                    <p>Building digital experiences with passion and precision.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#skills">Skills</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://github.com/kajal1322705" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank">LinkedIn</a>
+                        <a href="mailto:aditya@example.com">Email</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aditya Choudhry. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/kajal1322705" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/aditya-choudhry/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:aditya@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popups/Modals -->
+    
+    <!-- Search Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content search-modal-content">
+            <div class="search-header">
                 <i class="fas fa-search"></i>
-                <input type="text" id="commandInput" placeholder="Type a command or search... (Ctrl+K)">
-                <kbd>ESC</kbd>
+                <input type="text" id="searchInput" placeholder="Search projects, skills...">
+                <span class="search-shortcut">ESC</span>
             </div>
-            <ul class="command-palette-results" id="commandResults"></ul>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Start typing to search...</p>
+            </div>
         </div>
     </div>
+    
+    <!-- Project Detail Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content project-modal-content">
+            <button class="modal-close" id="projectModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="project-modal-body" id="projectModalBody">
+            </div>
+        </div>
+    </div>
+    
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content about-modal-content">
+            <button class="modal-close" id="aboutModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="about-modal-body">
+                <h2>More About Me</h2>
+                <div class="about-modal-grid">
+                    <div class="about-modal-section">
+                        <h3><i class="fas fa-heart"></i> Interests</h3>
+                        <ul>
+                            <li>Open Source Development</li>
+                            <li>UI/UX Design</li>
+                            <li>Machine Learning</li>
+                            <li>Game Development</li>
+                        </ul>
+                    </div>
+                    <div class="about-modal-section">
+                        <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                        <ul>
+                            <li>50+ Completed Projects</li>
+                            <li>Open Source Contributor</li>
+                            <li>Hackathon Participant</li>
+                            <li>Community Mentor</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Popup -->
+    <div class="popup" id="successPopup">
+        <div class="popup-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="popup-text">
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. I'll get back to you soon.</p>
+        </div>
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Cursor Effect -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
 
-    <!-- Keyboard Shortcuts Help -->
-    <div id="shortcutsHelp" class="shortcuts-help"></div>
-
-    <!-- Micro Frontend Architecture - Using ES Modules -->
-    <script type="module" src="js/app.js"></script>
-    <!-- Fallback for browsers without ES module support -->
-    <script nomodule src="script.js"></script>
+    <!-- Scripts -->
+    <script src="app.js" type="module"></script>
 </body>
 </html>
