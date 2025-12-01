@@ -4,6 +4,14 @@
 An interactive, professionally animated portfolio website showcasing projects and skills. Built entirely with vanilla HTML, CSS, and JavaScript with smooth animations, modern design, and vibrant colorful effects.
 
 ## Recent Changes
+- **December 1, 2025**: Mobile & Accessibility Improvements
+  - Enhanced mobile responsiveness with breakpoints at 1024px, 768px, 576px, 480px, 400px
+  - Fixed cartoon assistant chatbot - now visible and interactive on mobile devices
+  - Added chatbot close button and click-to-interact tips
+  - Improved navigation accessibility with aria-expanded, ESC key handling, and focus trapping
+  - Added touch-friendly improvements with proper hit target sizes (44px minimum)
+  - Implemented landscape mobile orientation support
+
 - **December 1, 2025**: Major feature enhancement
   - Added downloadable Resume/CV button in hero section
   - Implemented working Contact Form with email client integration
